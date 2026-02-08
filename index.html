@@ -6,54 +6,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
-body{background:#0b0b0b;color:white}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
+body{background:#f3f6fb;color:#1a1a1a}
 
-/* INTRO */
+/* ===== INTRO ===== */
 #intro{
   position:fixed;
   inset:0;
-  background:black;
+  background:#0b1f33;
   display:flex;
   align-items:center;
   justify-content:center;
-  z-index:100;
+  z-index:9999;
 }
 #intro h1{
   font-size:4rem;
-  letter-spacing:8px;
+  letter-spacing:6px;
+  color:#fff;
   animation:glow 1.5s infinite alternate;
 }
+@keyframes glow{
+  from{text-shadow:0 0 10px #fff}
+  to{text-shadow:0 0 35px #4fa3ff}
+}
 
-/* MAIN */
-#main{
-  display:none;
-  padding:40px 20px;
-  max-width:900px;
-  margin:auto;
+/* ===== HEADER ===== */
+header{
+  background:#0b3a5b;
+  color:#fff;
+  padding:30px 15px;
   text-align:center;
 }
-#main h1{
-  font-size:3rem;
-  margin-bottom:20px;
+header h1{font-size:2.5rem}
+header p{opacity:.85}
+
+/* ===== SECTION ===== */
+.section{
+  max-width:900px;
+  margin:30px auto;
+  background:#fff;
+  border-radius:14px;
+  padding:25px;
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
 }
-#main p{
-  font-size:1.05rem;
-  line-height:1.8;
-  opacity:0.9;
+.section h2{
+  border-left:4px solid #0b3a5b;
+  padding-left:10px;
+  margin-bottom:15px;
 }
 
-/* COUNTDOWN */
+/* ===== COUNTDOWN ===== */
 #countdown{
-  margin-top:40px;
-  font-size:2rem;
-  letter-spacing:2px;
+  margin-top:15px;
+  padding:15px;
+  background:#eef4ff;
+  border-radius:10px;
+  font-weight:600;
 }
 
-/* ANIMATIONS */
-@keyframes glow{
-  from{text-shadow:0 0 10px white}
-  to{text-shadow:0 0 30px #4fa3ff}
+/* ===== BUTTON ===== */
+.btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 20px;
+  background:#0b3a5b;
+  color:#fff;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+}
+.btn:hover{opacity:.9}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:20px;
+  opacity:.6;
+  font-size:.9rem;
 }
 </style>
 </head>
@@ -66,32 +95,57 @@ body{background:#0b0b0b;color:white}
 </div>
 
 <!-- MAIN SITE -->
-<div id="main">
-  <h1>MANKIT</h1>
+<header>
+  <h1>Mankit</h1>
+  <p>Official Personal & Professional Portal</p>
+</header>
 
+<div class="section">
+  <h2>Welcome</h2>
   <p>
-Welcome to Mankit Official — a space built with intention, patience, and belief.  
-This platform is not just a website, it is a reflection of a journey that values growth,
-learning, and consistency over shortcuts. Every step taken here represents effort,
-experience, and the courage to keep moving forward even when the path feels uncertain.
-
-This place will slowly evolve into something meaningful — ideas, thoughts, projects,
-and stories that are shaped by real experiences. The goal is simple: to create something
-honest, impactful, and inspiring for those who believe in progress and self-development.
-
-Right now, this is just the beginning. The foundation has been laid, and with time,
-this space will grow stronger, clearer, and more purposeful. Stay connected,
-stay curious, and welcome to the journey ahead.
+  Welcome to my official digital space. This platform reflects my journey,
+  values, and continuous effort to grow with discipline and purpose.
+  Everything you see here represents consistency, learning, and honest work.
   </p>
 
   <div id="countdown">Loading countdown…</div>
 </div>
 
+<div class="section">
+  <h2>Those Who Shaped My Foundation</h2>
+  <p>
+  Teachers from PM Shri GSSS Karnal have played a defining role in shaping
+  my thinking and discipline.
+  </p>
+  <a class="btn" href="#">See Blessings</a>
+</div>
+
+<div class="section">
+  <h2>A Letter That Strengthened My Resolve</h2>
+  <p>
+  Encouragement received from the Hon’ble Prime Minister of India reminded me
+  of responsibility, service, and continued dedication.
+  </p>
+  <a class="btn" href="#">View Letter</a>
+</div>
+
+<div class="section">
+  <h2>About Me</h2>
+  <p>
+  My name is Mankit, born and raised in Karnal. I completed my schooling from
+  PM Shri Government Senior Secondary School, Karnal. I am currently a JEE
+  aspirant who believes in consistency, discipline, and honest effort.
+  </p>
+</div>
+
+<footer>
+  © 2026 Mankit. All rights reserved.
+</footer>
+
 <script>
-/* INTRO HIDE */
+/* INTRO REMOVE */
 setTimeout(()=>{
   document.getElementById("intro").style.display="none";
-  document.getElementById("main").style.display="block";
 },3000);
 
 /* COUNTDOWN */
@@ -99,19 +153,16 @@ const target = new Date("March 3, 2026 00:00:00").getTime();
 setInterval(()=>{
   const now = new Date().getTime();
   const diff = target - now;
-
   if(diff < 0){
-    document.getElementById("countdown").innerHTML = "🎉 It's 3 March!";
+    document.getElementById("countdown").innerHTML="🎉 It's 3 March!";
     return;
   }
-
-  const d = Math.floor(diff/(1000*60*60*24));
-  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m = Math.floor((diff%(1000*60*60))/(1000*60));
-  const s = Math.floor((diff%(1000*60))/1000);
-
-  document.getElementById("countdown").innerHTML =
-    `${d}d ${h}h ${m}m ${s}s to 3 March`;
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m=Math.floor((diff%(1000*60*60))/(1000*60));
+  const s=Math.floor((diff%(1000*60))/1000);
+  document.getElementById("countdown").innerHTML=
+    `Countdown to 3 March 2026: ${d}d ${h}h ${m}m ${s}s`;
 },1000);
 </script>
 
