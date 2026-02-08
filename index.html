@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Mankit Official</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+      margin:0;
+      background:black;
+      color:white;
+      font-family: 'Segoe UI', sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100vh;
+      overflow:hidden;
+    }
+    .intro{
+      text-align:center;
+      animation: fadeOut 4s forwards;
+    }
+    h1{
+      font-size:3rem;
+      letter-spacing:3px;
+    }
+    p{
+      opacity:0.8;
+      margin-top:10px;
+    }
+    @keyframes fadeOut{
+      0%{opacity:1}
+      80%{opacity:1}
+      100%{opacity:0}
+    }
+    .main{
+      display:none;
+      text-align:center;
+    }
+  </style>
 </head>
 <body>
-  <h1>🚀 Mankit Official Website</h1>
-  <p>Site successfully live ho chuki hai.</p>
+
+<div class="intro" id="intro">
+  ✨✨✨
+  <h1>MANKIT</h1>
+  <p>Official Website</p>
+</div>
+
+<div class="main" id="main">
+  <h1>Welcome to Mankit Official</h1>
+  <p>Content coming soon… 🚀</p>
+</div>
+
+<script>
+  setTimeout(()=>{
+    document.getElementById("intro").style.display="none";
+    document.getElementById("main").style.display="block";
+  },4000);
+</script>
+
 </body>
 </html>
