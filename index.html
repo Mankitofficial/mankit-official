@@ -14,21 +14,19 @@ body{
   color:#1a1a1a;
 }
 
-/* PHOTO SPLASH */
+/* SPLASH WITH FADE-IN EFFECT */
 #splash{
   position:fixed;
   inset:0;
   background:url('hero.jpg') no-repeat center center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   z-index:9999;
+  opacity:0;
+  animation:fadeIn 1.2s ease forwards;
 }
-#splash h1{
-  font-size:4rem;
-  letter-spacing:8px;
-  color:gold;
-  text-shadow:0 6px 25px rgba(0,0,0,.7);
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
 }
 
 /* HEADER */
@@ -121,26 +119,19 @@ footer{
   opacity:.8;
   font-size:.85rem;
 }
-
-@media(max-width:768px){
-  #splash h1{font-size:2.6rem;}
-}
 </style>
 </head>
 
 <body>
 
-<!-- PHOTO SPLASH -->
-<div id="splash">
-  <h1>MANKIT</h1>
-</div>
+<!-- PHOTO SPLASH (NO TEXT) -->
+<div id="splash"></div>
 
 <header>
   <h1>Mankit</h1>
   <p>Official Personal & Professional Portal</p>
 </header>
 
-<!-- WELCOME -->
 <div class="section">
   <h2>Welcome</h2>
   <p>
@@ -157,7 +148,6 @@ footer{
   <div id="countdown">Loading countdown…</div>
 </div>
 
-<!-- WRITING -->
 <div class="section">
   <h2>Zindagi Ka Real Syllabus ✍️</h2>
   <p>
@@ -171,7 +161,6 @@ footer{
   </a>
 </div>
 
-<!-- GOOGLE DRIVE DOCUMENT -->
 <div class="section">
   <h2>Important Document & Reflection 📄</h2>
   <p>
@@ -189,7 +178,6 @@ footer{
   </a>
 </div>
 
-<!-- ABOUT -->
 <div class="section">
   <h2>About Me</h2>
   <p>
@@ -214,7 +202,6 @@ footer{
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-box">
     <a class="contact-card" target="_blank"
@@ -236,7 +223,7 @@ footer{
 </footer>
 
 <script>
-/* SPLASH AUTO HIDE (4 sec) */
+/* SPLASH AUTO REMOVE AFTER 4 SEC */
 setTimeout(function(){
   document.getElementById("splash").style.display="none";
 },4000);
