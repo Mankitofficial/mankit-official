@@ -14,7 +14,7 @@ body{
   color:#1a1a1a;
 }
 
-/* SPLASH WITH FADE-IN */
+/* SPLASH */
 #splash{
   position:fixed;
   inset:0;
@@ -23,10 +23,7 @@ body{
   opacity:0;
   animation:fadeIn 1.2s ease forwards;
 }
-@keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
-}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 /* HEADER */
 header{
@@ -123,7 +120,6 @@ footer{
 
 <body>
 
-<!-- SPLASH -->
 <div id="splash"></div>
 
 <header>
@@ -148,31 +144,26 @@ footer{
   <div id="countdown">Loading countdown…</div>
 </div>
 
-<!-- PRERANA EXPERIENCE (NEW SECTION) -->
+<!-- PRERANA UNDER PROCESS -->
 <div class="section">
   <h2>PRERANA Journey & Learnings</h2>
-  <p>
-    As a proud <strong>PRERANA Alumnus</strong>, my journey has been shaped by
-    real-life experiences, moral values, and purposeful learning.
-  </p>
 
   <p>
-    The PRERANA program taught me discipline, ethical thinking, leadership,
-    and the importance of serving society with honesty and responsibility.
+    As a proud <strong>PRERANA Alumnus</strong>, this section will soon document
+    my experiences, moral value-based learnings, and long-term vision shaped
+    through the PRERANA program.
   </p>
 
-  <p>
-    These learnings continue to guide my mindset, strengthen my character,
-    and define my long-term goals.
-  </p>
+  <div class="callout">
+    ⏳ Content under process. Detailed reflections will be uploaded shortly.
+  </div>
 
-  <a class="btn" target="_blank"
-     href="https://green-cartoon-b8e.notion.site/Prerana-Experience-302161bfa1c780b684d5c7ee30bde2bb">
-     Read My PRERANA Experience →
+  <a class="btn" style="opacity:.7;pointer-events:none;">
+    PRERANA Experience – Coming Soon
   </a>
 </div>
 
-<!-- ZINDAGI KA REAL SYLLABUS -->
+<!-- ZINDAGI -->
 <div class="section">
   <h2>Zindagi Ka Real Syllabus ✍️</h2>
   <p>
@@ -184,6 +175,41 @@ footer{
      href="https://green-cartoon-b8e.notion.site/Zindagi-Ka-Real-Syllabus-2dd161bfa1c78065b5efcb27eeb530a6?pvs=73">
      Enter My Writing World →
   </a>
+</div>
+
+<!-- ABOUT ME (NEW - 200 WORDS) -->
+<div class="section">
+  <h2>About Me</h2>
+
+  <p>
+    My name is <strong>Mankit</strong>, a learner driven by values, purpose,
+    and continuous self-growth. I am a proud <strong>PRERANA Alumnus</strong>,
+    where my mindset was shaped through real-life exposure, moral education,
+    and disciplined thinking. The PRERANA journey taught me the importance
+    of responsibility, integrity, and contributing positively to society.
+  </p>
+
+  <p>
+    I am also a member of the <strong>Sakura Science Club, Japan</strong>,
+    which introduced me to global perspectives, scientific curiosity,
+    and collaborative learning beyond boundaries. I strongly believe in
+    <strong>equality, mutual respect, and feminism</strong> — values that
+    promote dignity, fairness, and equal opportunities for everyone.
+  </p>
+
+  <p>
+    Friendship, motivation, and emotional support play a significant role
+    in my life. I believe growth becomes meaningful when it is shared,
+    encouraged, and guided with empathy. Every step of my journey carries
+    the silent support of my <strong>parents</strong>, the guidance of
+    <strong>PRERANA mentors</strong>, and the strength of people who believed
+    in me when it mattered the most.
+  </p>
+
+  <p style="opacity:.8;font-size:.9rem">
+    Due to privacy and ethical considerations, certain details and
+    acknowledgements are respectfully not displayed.
+  </p>
 </div>
 
 <!-- FOOTER -->
@@ -208,12 +234,10 @@ footer{
 </footer>
 
 <script>
-/* SPLASH AUTO REMOVE */
 setTimeout(function(){
   document.getElementById("splash").style.display="none";
 },4000);
 
-/* COUNTDOWN */
 const target=new Date("March 3, 2026 00:00:00").getTime();
 setInterval(()=>{
   const now=new Date().getTime();
