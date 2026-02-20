@@ -65,13 +65,6 @@ header h1{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-.section h3{
-  margin-top:25px;
-  font-family:'Playfair Display',serif;
-  background:linear-gradient(135deg,#d4af37,#f6e27a,#b8962e);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
 .section p{line-height:1.8;margin-top:10px}
 
 /* CALLOUT */
@@ -103,6 +96,24 @@ header h1{
   background:linear-gradient(135deg,#d4af37,#f5df7d,#b8962e);
   color:#2a1b00;
   text-decoration:none;
+  font-weight:600;
+}
+
+/* TOGGLE */
+details{
+  margin-top:18px;
+  padding:15px 18px;
+  border-radius:14px;
+  background:#fafafa;
+  border:1px solid rgba(212,175,55,.25);
+}
+summary{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  cursor:pointer;
+  background:linear-gradient(135deg,#d4af37,#f6e27a,#b8962e);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
   font-weight:600;
 }
 
@@ -167,7 +178,7 @@ footer{
 <div class="section">
   <h2>PRERANA Journey & Learnings</h2>
   <p>
-    As a proud <strong>PRERANA Alumnus</strong>, this section will soon document
+    As a proud PRERANA Alumnus, this section will soon document
     my experiences and moral learnings shaped through the PRERANA program.
   </p>
 
@@ -194,54 +205,48 @@ footer{
   </a>
 </div>
 
-<!-- ABOUT ME -->
+<!-- ABOUT ME WITH TOGGLE -->
 <div class="section">
   <h2>About Me</h2>
 
-  <h3>Introduction</h3>
-  <p>
-    My name is <strong>Mankit</strong>, a learner driven by discipline,
-    consistency, and purposeful growth.
-  </p>
+  <details>
+    <summary>Introduction</summary>
+    <p>My name is Mankit, a learner driven by discipline, consistency, and purposeful growth.</p>
+  </details>
 
-  <h3>PRERANA Program</h3>
-  <p>
-    As a PRERANA Alumnus, I experienced value-based learning,
-    leadership exposure, and moral education.
-  </p>
+  <details>
+    <summary>PRERANA Program</summary>
+    <p>As a PRERANA Alumnus, I experienced value-based learning, leadership exposure, and moral education that shaped my mindset and character.</p>
+  </details>
 
-  <h3>Sakura Science Club, Japan</h3>
-  <p>
-    A member of Sakura Science Club, gaining global scientific exposure
-    and cross-cultural understanding.
-  </p>
+  <details>
+    <summary>Sakura Science Club, Japan</summary>
+    <p>Member of Sakura Science Club, gaining global scientific exposure and cross-cultural understanding.</p>
+  </details>
 
-  <h3>Personality</h3>
-  <p>
-    I believe in equality, feminism, respect, friendship,
-    motivation, and balanced ambition.
-  </p>
+  <details>
+    <summary>Personality</summary>
+    <p>I believe in equality, feminism, respect, friendship, motivation, and balanced ambition.</p>
+  </details>
 
-  <h3>Aim</h3>
-  <p>
-    To grow intellectually and morally while contributing meaningfully to society.
-  </p>
+  <details>
+    <summary>Aim</summary>
+    <p>To grow intellectually and morally while contributing meaningfully to society.</p>
+  </details>
 
-  <h3>Credit Goes To</h3>
-  <p>
-    Parents, PRERANA mentors, PM Shri GSSS teachers,
-    and respectable friends for constant guidance and support.
-  </p>
+  <details>
+    <summary>Credit Goes To</summary>
+    <p>Parents, PRERANA mentors, PM Shri GSSS teachers, and respectable friends for constant guidance and support.</p>
+  </details>
 
-  <h3>ATBF</h3>
-  <p>
-    ATBF (All Time Best Friend) — name undisclosed due to privacy,
-    but contribution remains invaluable.
-  </p>
-
-  <p style="opacity:.8;font-size:.9rem;margin-top:10px;">
-    Certain acknowledgements are respectfully not displayed due to privacy considerations.
-  </p>
+  <details>
+    <summary>ATBF (All Time Best Friend)</summary>
+    <p>
+      A deeply personal presence in my journey. Emotional strength during difficult times,
+      practical support in decision-making, and constant belief in my potential.
+      Name undisclosed due to privacy, but contribution remains invaluable.
+    </p>
+  </details>
 
 </div>
 
