@@ -15,7 +15,7 @@ body{
   font-family:'Poppins',sans-serif;
 }
 
-/* SPLASH SCREEN */
+/* SPLASH */
 #splash{
   position:fixed;
   inset:0;
@@ -44,7 +44,10 @@ header{
   padding:45px 15px;
   text-align:center;
 }
-header h1{font-size:2.9rem;font-family:'Playfair Display',serif}
+header h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.9rem;
+}
 
 /* SECTION */
 .section{
@@ -139,6 +142,7 @@ footer{
   <p>Official Personal & Professional Portal</p>
 </header>
 
+<!-- WELCOME -->
 <div class="section">
   <h2>Welcome</h2>
   <p>
@@ -153,6 +157,58 @@ footer{
   <div id="countdown">Loading countdown…</div>
 </div>
 
+<!-- PRERANA -->
+<div class="section">
+  <h2>PRERANA Journey & Learnings</h2>
+  <p>
+    As a proud <strong>PRERANA Alumnus</strong>, this section will soon document
+    my experiences and moral learnings shaped through the PRERANA program.
+  </p>
+
+  <div class="callout">
+    ⏳ Content under process. Detailed reflections will be uploaded shortly.
+  </div>
+
+  <a class="btn" style="opacity:.7;pointer-events:none;">
+    PRERANA Experience – Coming Soon
+  </a>
+</div>
+
+<!-- ZINDAGI -->
+<div class="section">
+  <h2>Zindagi Ka Real Syllabus ✍️</h2>
+  <p>
+    A writing space where real experiences, learning, mistakes,
+    and life lessons come together through words.
+  </p>
+
+  <a class="btn" target="_blank"
+     href="https://green-cartoon-b8e.notion.site/Zindagi-Ka-Real-Syllabus-2dd161bfa1c78065b5efcb27eeb530a6?pvs=73">
+     Enter My Writing World →
+  </a>
+</div>
+
+<!-- ABOUT -->
+<div class="section">
+  <h2>About Me</h2>
+  <p>
+    My name is <strong>Mankit</strong>. I am a proud <strong>PRERANA Alumnus</strong>
+    and a member of the <strong>Sakura Science Club, Japan</strong>.
+  </p>
+
+  <p>
+    I believe in equality, respect, discipline, friendship,
+    and meaningful growth.
+  </p>
+
+  <p>
+    A significant part of my progress goes to my parents,
+    PRERANA mentors, PM Shri GSSS teachers, respectable friends,
+    and <strong>ATBF (All Time Best Friend)</strong>.
+  </p>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-box">
     <a class="contact-card" target="_blank"
@@ -174,8 +230,7 @@ footer{
 </footer>
 
 <script>
-
-/* TYPEWRITER EFFECT */
+/* TYPEWRITER */
 const text="MANKIT";
 let i=0;
 function typeWriter(){
@@ -187,7 +242,7 @@ function typeWriter(){
 }
 typeWriter();
 
-/* SPLASH REMOVE AFTER 4 SEC */
+/* REMOVE SPLASH AFTER 4 SEC */
 setTimeout(()=>{
   document.getElementById("splash").style.display="none";
 },4000);
@@ -208,7 +263,6 @@ setInterval(()=>{
   document.getElementById("countdown").innerHTML=
   `Countdown to 03 March: ${d}d ${h}h ${m}m ${s}s`;
 },1000);
-
 </script>
 
 </body>
