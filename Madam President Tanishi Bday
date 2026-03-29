@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome Madam President</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1a2f;
+      color: white;
+      text-align: center;
+    }
+
+    .screen {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      font-size: 40px;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      background: #122b4d;
+      padding: 15px;
+      text-align: left;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    .countdown {
+      font-size: 30px;
+      margin-top: 20px;
+      color: #00ffcc;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background: #00aaff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    input, textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div id="welcomeScreen" class="screen">
+  <h1>Welcome Madam President</h1>
+</div>
+
+<!-- SCREEN 2 -->
+<div id="mainSite" class="hidden">
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#form">Submit Details</a>
+  </nav>
+
+  <div class="container">
+
+    <h2>Official Countdown</h2>
+    <div class="countdown" id="countdown"></div>
+
+    <p>
+      Tanishi Ji, Happy Birthday in Advance 🎉<br><br>
+      Aapka gift bade seriously prepare kiya ja raha hai.<br>
+      Isme mehnat ke saath-saath logic aur improvement bhi add kiya ja raha hai.<br><br>
+      Yeh ek confidential gift hai, jo aap deserve karti hain ❤️<br>
+      Thoda sa wait karna hoga.
+    </p>
+
+    <button class="btn" onclick="scrollToForm()">Enter Details</button>
+
+  </div>
+
+  <!-- FORM -->
+  <div id="form" class="container">
+    <h2>Submit Details (Urgent)</h2>
+
+    <input type="text" placeholder="Full Name"><br>
+    <textarea placeholder="Full Address"></textarea><br>
+
+    <button class="btn">Submit</button>
+
+    <p style="margin-top:20px;">
+      Happy Birthday in Advance Madam President Tanishi Ji 🎂<br>
+      Blessings, gifts aur surprises ke liye ready rahiye ❤️
+    </p>
+  </div>
+
+</div>
+
+<script>
+
+  // AUTO TRANSITION AFTER 3 SEC
+  setTimeout(() => {
+    document.getElementById("welcomeScreen").classList.add("hidden");
+    document.getElementById("mainSite").classList.remove("hidden");
+  }, 3000);
+
+  // COUNTDOWN
+  const countdown = document.getElementById("countdown");
+  const targetDate = new Date("April 23, 2026 00:00:00").getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+    const minutes = Math.floor((diff % (1000*60*60))/(1000*60));
+    const seconds = Math.floor((diff % (1000*60))/1000);
+
+    countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }, 1000);
+
+  function scrollToForm() {
+    document.getElementById("form").scrollIntoView({behavior:"smooth"});
+  }
+
+</script>
+
+</body>
+</html>
