@@ -91,35 +91,88 @@ body{
 
 /* WELCOME CARD */
 
-.welcome-container{
+.section-container{
     padding:40px 20px;
 }
 
-.welcome-box{
+.card{
     max-width:900px;
     margin:auto;
     background:white;
     border-radius:35px;
     padding:45px;
     box-shadow:0 10px 35px rgba(0,0,0,0.08);
+    margin-bottom:35px;
 }
 
-.welcome-box h2{
+.card h2{
     color:#d4af37;
-    font-size:60px;
+    font-size:55px;
     font-family:'Playfair Display',serif;
     margin-bottom:25px;
 }
 
-.welcome-box p{
+.card p{
     font-size:24px;
     line-height:1.9;
     color:#222;
 }
 
+/* EXPERIENCE BUTTONS */
+
+.link-box{
+    display:block;
+    width:100%;
+    text-decoration:none;
+    background:linear-gradient(135deg,#005eff,#00bfff);
+    color:white;
+    padding:28px;
+    border-radius:25px;
+    margin-top:25px;
+    transition:0.4s ease;
+    box-shadow:0 8px 25px rgba(0,0,0,0.12);
+}
+
+.link-box:hover{
+    transform:translateY(-5px);
+}
+
+.link-box h3{
+    font-size:30px;
+    margin-bottom:10px;
+    font-family:'Playfair Display',serif;
+}
+
+.link-box p{
+    font-size:18px;
+    color:white;
+    line-height:1.6;
+}
+
+/* PREMIUM SECTION */
+
+.email-box{
+    background:linear-gradient(135deg,#02153b,#003ed1);
+}
+
+.email-box h3{
+    color:#fff;
+}
+
+.email-box p{
+    color:#f2f2f2;
+}
+
+/* FOOTER SPACE */
+
+.bottom-space{
+    height:60px;
+}
+
 /* ANIMATIONS */
 
 @keyframes logoAnimation{
+
     0%{
         opacity:0;
         transform:translateY(40px);
@@ -134,6 +187,7 @@ body{
 }
 
 @keyframes fadeContent{
+
     from{
         opacity:0;
         transform:translateY(20px);
@@ -166,18 +220,26 @@ body{
         font-size:18px;
     }
 
-    .welcome-box{
+    .card{
         padding:35px 28px;
         border-radius:28px;
     }
 
-    .welcome-box h2{
-        font-size:45px;
+    .card h2{
+        font-size:42px;
     }
 
-    .welcome-box p{
+    .card p{
         font-size:19px;
         line-height:1.8;
+    }
+
+    .link-box h3{
+        font-size:24px;
+    }
+
+    .link-box p{
+        font-size:16px;
     }
 
 }
@@ -209,11 +271,13 @@ body{
 
     </section>
 
-    <!-- WELCOME -->
+    <!-- MAIN SECTION -->
 
-    <section class="welcome-container">
+    <section class="section-container">
 
-        <div class="welcome-box">
+        <!-- WELCOME -->
+
+        <div class="card">
 
             <h2>Welcome</h2>
 
@@ -226,7 +290,71 @@ body{
 
         </div>
 
+        <!-- PRERANA EXPERIENCE -->
+
+        <div class="card">
+
+            <h2>Journey Beyond PRERANA ✨</h2>
+
+            <a href="https://fixed-dragonfly-5de.notion.site/Preana-Program-36689058459d80239636d6d9e16c35c7"
+               target="_blank"
+               class="link-box">
+
+                <h3>PRERANA Experience & Learnings</h3>
+
+                <p>
+                    Explore my journey, experiences,
+                    memories, and learnings after PRERANA.
+                </p>
+
+            </a>
+
+        </div>
+
+        <!-- JAPAN EXPERIENCE -->
+
+        <div class="card">
+
+            <h2>Sakura Science Club Japan ✨</h2>
+
+            <a href="https://fixed-dragonfly-5de.notion.site/SSC-Japan-36689058459d80f0a396f2cf4e628e80"
+               target="_blank"
+               class="link-box">
+
+                <h3>Japan Experience & Cultural Journey</h3>
+
+                <p>
+                    Discover my experience with Sakura Science Club Japan,
+                    international exposure, innovation, and memories.
+                </p>
+
+            </a>
+
+        </div>
+
+        <!-- PREMIUM STUDY MATERIAL -->
+
+        <div class="card">
+
+            <h2>Get Premium Study Material</h2>
+
+            <a href="mailto:mankitmankit7@gmail.com?subject=Premium Study Material Request&body=Name:%0D%0AClass:%0D%0ASchool:%0D%0ADost:%0D%0AState:%0D%0AContent you want:%0D%0ARemarks:%0D%0AWhatsApp Number:"
+               class="link-box email-box">
+
+                <h3>Request Study Material 📚</h3>
+
+                <p>
+                    Click here to send your request directly.
+                    Your email will automatically open with a ready-made format.
+                </p>
+
+            </a>
+
+        </div>
+
     </section>
+
+    <div class="bottom-space"></div>
 
 </div>
 
