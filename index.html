@@ -2,319 +2,249 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mankit Official</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Mankit Official Platform</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-  background:linear-gradient(180deg,#f6f8fc,#eef2ff);
-  color:#1a1a1a;
-  font-family:'Poppins',sans-serif;
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    background:#f4f4f4;
 }
 
-/* SPLASH */
-#splash{
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at center,#0b5cff,#08162e);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-#typing{
-  font-family:'Playfair Display',serif;
-  font-size:4rem;
-  letter-spacing:8px;
-  background:linear-gradient(135deg,#d4af37,#f6e27a,#b8962e);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  border-right:3px solid gold;
-  padding-right:5px;
+/* SPLASH SCREEN */
+
+#splash-screen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:linear-gradient(to bottom,#02153b,#003ed1);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:1s ease;
 }
 
-/* HEADER */
-header{
-  background:linear-gradient(135deg,#0b5cff,#00c6ff);
-  color:#fff;
-  padding:45px 15px;
-  text-align:center;
-}
-header h1{
-  font-family:'Playfair Display',serif;
-  font-size:2.9rem;
+.logo-text{
+    font-size:85px;
+    color:#d4af37;
+    letter-spacing:10px;
+    font-family:'Playfair Display',serif;
+    opacity:0;
+    transform:translateY(30px);
+    animation:logoAnimation 3s ease forwards;
 }
 
-/* SECTION */
-.section{
-  max-width:900px;
-  margin:40px auto;
-  background:#ffffff;
-  border-radius:20px;
-  padding:34px;
-  box-shadow:0 20px 45px rgba(0,0,0,.08);
-}
-.section h2{
-  font-family:'Playfair Display',serif;
-  font-size:1.8rem;
-  margin-bottom:20px;
-  background:linear-gradient(135deg,#d4af37,#f6e27a,#b8962e);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.section p{line-height:1.8;margin-top:10px}
+/* MAIN CONTENT */
 
-/* CALLOUT */
-.callout{
-  margin:25px 0;
-  padding:20px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#fff6d1,#f3e7a3);
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
-  font-weight:500;
+#main-content{
+    display:none;
+    opacity:0;
+    animation:fadeContent 1.5s ease forwards;
 }
 
-/* COUNTDOWN */
-#countdown{
-  margin-top:18px;
-  padding:18px;
-  border-radius:16px;
-  background:linear-gradient(135deg,#fff6d1,#f3e7a3);
-  font-weight:600;
-  text-align:center;
+/* HERO SECTION */
+
+.hero{
+    height:320px;
+    background:linear-gradient(135deg,#005eff,#00bfff);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
 }
 
-/* BUTTON */
-.btn{
-  display:inline-block;
-  margin-top:18px;
-  padding:14px 26px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#d4af37,#f5df7d,#b8962e);
-  color:#2a1b00;
-  text-decoration:none;
-  font-weight:600;
+.hero h1{
+    font-size:70px;
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    margin-bottom:10px;
 }
 
-/* TOGGLE */
-details{
-  margin-top:18px;
-  padding:15px 18px;
-  border-radius:14px;
-  background:#fafafa;
-  border:1px solid rgba(212,175,55,.25);
-}
-summary{
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem;
-  cursor:pointer;
-  background:linear-gradient(135deg,#d4af37,#f6e27a,#b8962e);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  font-weight:600;
+.hero p{
+    font-size:24px;
+    font-weight:300;
 }
 
-/* FOOTER */
-footer{
-  background:linear-gradient(135deg,#0b5cff,#00c6ff);
-  color:#fff;
-  padding:40px 15px;
-  margin-top:50px;
+/* WELCOME CARD */
+
+.welcome-container{
+    padding:40px 20px;
 }
-.footer-box{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  gap:18px;
+
+.welcome-box{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    border-radius:35px;
+    padding:45px;
+    box-shadow:0 10px 35px rgba(0,0,0,0.08);
 }
-.contact-card{
-  background:rgba(255,255,255,.15);
-  padding:18px;
-  border-radius:16px;
-  font-weight:500;
-  color:white;
-  text-decoration:none;
+
+.welcome-box h2{
+    color:#d4af37;
+    font-size:60px;
+    font-family:'Playfair Display',serif;
+    margin-bottom:25px;
 }
-.contact-card span{
-  display:block;
-  opacity:.85;
-  font-size:.9rem;
+
+.welcome-box p{
+    font-size:24px;
+    line-height:1.9;
+    color:#222;
 }
-.copy{text-align:center;margin-top:25px;opacity:.8;font-size:.85rem}
+
+/* ANIMATIONS */
+
+@keyframes logoAnimation{
+    0%{
+        opacity:0;
+        transform:translateY(40px);
+        letter-spacing:25px;
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0);
+        letter-spacing:10px;
+    }
+}
+
+@keyframes fadeContent{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .logo-text{
+        font-size:58px;
+        letter-spacing:6px;
+    }
+
+    .hero{
+        height:280px;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .welcome-box{
+        padding:35px 28px;
+        border-radius:28px;
+    }
+
+    .welcome-box h2{
+        font-size:45px;
+    }
+
+    .welcome-box p{
+        font-size:19px;
+        line-height:1.8;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- SPLASH -->
-<div id="splash">
-  <div id="typing"></div>
+<!-- SPLASH SCREEN -->
+
+<div id="splash-screen">
+    <h1 class="logo-text">MANKIT</h1>
 </div>
 
-<header>
-  <h1>Mankit</h1>
-  <p>Official Personal & Professional Portal</p>
-</header>
+<!-- MAIN WEBSITE -->
 
-<!-- WELCOME -->
-<div class="section">
-  <h2>Welcome</h2>
-  <p>
-    Welcome to my official digital space. This platform reflects my journey,
-    values, and continuous effort to grow with discipline and honest intent.
-  </p>
-  <div class="callout">
-    🎂 <strong>03 March</strong> marks a journey shaped by consistency and courage.
-  </div>
-  <div id="countdown">Loading countdown…</div>
+<div id="main-content">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>Mankit</h1>
+
+        <p>
+            Official Personal & Professional Portal
+        </p>
+
+    </section>
+
+    <!-- WELCOME -->
+
+    <section class="welcome-container">
+
+        <div class="welcome-box">
+
+            <h2>Welcome</h2>
+
+            <p>
+                Welcome to my official digital space.
+                This platform reflects my journey,
+                values, and continuous effort to
+                grow with discipline and honest intent.
+            </p>
+
+        </div>
+
+    </section>
+
 </div>
-
-<!-- PRERANA -->
-<div class="section">
-  <h2>PRERANA Journey & Learnings</h2>
-  <p>
-    As a proud PRERANA Alumnus, this section will soon document
-    my experiences and moral learnings shaped through the PRERANA program.
-  </p>
-  <div class="callout">
-    ⏳ Content under process. Detailed reflections will be uploaded shortly.
-  </div>
-</div>
-
-<!-- ZINDAGI -->
-<div class="section">
-  <h2>Zindagi Ka Real Syllabus ✍️</h2>
-  <p>
-    A writing space where real experiences, learning, mistakes,
-    and life lessons come together through words.
-  </p>
-  <a class="btn" target="_blank"
-     href="https://green-cartoon-b8e.notion.site/Zindagi-Ka-Real-Syllabus-2dd161bfa1c78065b5efcb27eeb530a6?pvs=73">
-     Enter My Writing World →
-  </a>
-</div>
-
-<!-- ABOUT ME -->
-<div class="section">
-  <h2>About Me</h2>
-
-  <details>
-    <summary>Introduction</summary>
-    <p>
-      My name is <strong>Mankit</strong>, born and brought up in Karnal.
-      I completed my schooling from <strong>PM Shri Government Senior Secondary School, Karnal</strong>.
-      My journey is built on discipline, consistency, and purpose-driven growth.
-    </p>
-  </details>
-
-  <details>
-    <summary>PRERANA Program</summary>
-    <p>
-      The PRERANA Program was life-changing for me.
-      It strengthened my moral values, leadership thinking, and sense of responsibility.
-      It shaped my mindset toward ethical decisions and national awareness.
-    </p>
-  </details>
-
-  <details>
-    <summary>Sakura Science Club, Japan</summary>
-    <p>
-      My first international exposure came through Sakura Science Club, Japan.
-      It allowed me to explore science globally and develop cross-cultural understanding.
-    </p>
-  </details>
-
-  <details>
-    <summary>Success Credit Goes To</summary>
-    <p>
-      My parents, PRERANA mentors, PM Shri GSSS teachers,
-      and respectable friends contributed significantly
-      through guidance, support, and motivation.
-    </p>
-  </details>
-
-  <details>
-    <summary>ATBF (All Time Best Friend)</summary>
-    <p>
-      ATBF is truly God gifted — something different and deeply meaningful.
-      If I define friendship, ATBF itself becomes the definition.
-      Emotional understanding, practical decision-making support,
-      motivation, and a strong sense of belonging make it special.
-    </p>
-    <p>
-      Explaining ATBF completely would require a book.
-      The name remains undisclosed out of respect and privacy —
-      but heartfelt greetings always remain.
-    </p>
-  </details>
-</div>
-
-<!-- CONTACT / FEEDBACK -->
-<div class="section">
-  <h2>Send Your Doubt, Feedback & Suggestions</h2>
-  <p>
-    If you have any doubts, suggestions, or valuable feedback,
-    feel free to connect directly.
-  </p>
-  <a class="btn" href="mailto:mankitmankit7@gmail.com">
-    Send Email →
-  </a>
-</div>
-
-<footer>
-  <div class="footer-box">
-    <a class="contact-card" target="_blank"
-       href="https://www.instagram.com/mankitvibes.only_/">
-      📸 Instagram
-      <span>@mankitvibes.only_</span>
-    </a>
-
-    <a class="contact-card"
-       href="mailto:mankitmankit7@gmail.com">
-      ✉️ Email
-      <span>mankitmankit7@gmail.com</span>
-    </a>
-  </div>
-
-  <div class="copy">
-    © 2026 Mankit. All rights reserved.
-  </div>
-</footer>
 
 <script>
-const text="MANKIT";
-let i=0;
-function typeWriter(){
-  if(i<text.length){
-    document.getElementById("typing").innerHTML+=text.charAt(i);
-    i++;
-    setTimeout(typeWriter,500);
-  }
-}
-typeWriter();
 
-setTimeout(()=>{
-  document.getElementById("splash").style.display="none";
-},4000);
+/* SPLASH SCREEN CONTROL */
 
-const target=new Date("March 3, 2026 00:00:00").getTime();
-setInterval(()=>{
-  const now=new Date().getTime();
-  const diff=target-now;
-  if(diff<0){
-    document.getElementById("countdown").innerHTML="🎉 Happy Birthday, Mankit!";
-    return;
-  }
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m=Math.floor((diff%(1000*60*60))/(1000*60));
-  const s=Math.floor((diff%(1000*60))/1000);
-  document.getElementById("countdown").innerHTML=
-  `Countdown to 03 March: ${d}d ${h}h ${m}m ${s}s`;
-},1000);
+setTimeout(() => {
+
+    document.getElementById("splash-screen").style.opacity = "0";
+    document.getElementById("splash-screen").style.visibility = "hidden";
+
+    document.getElementById("main-content").style.display = "block";
+
+    document.body.style.overflow = "auto";
+
+}, 3000);
+
 </script>
 
 </body>
