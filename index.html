@@ -3,46 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="theme-color" content="#050505">
-<meta name="description" content="Mankit Office Life — Academics, Ideas, Connect & Personal Digital Office">
 
 <title>Mankit | Office Life</title>
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-<!-- Icons -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
-:root{
-    --bg:#050505;
-    --bg2:#0a0a0a;
-    --card:#101010;
-    --card2:#141414;
-    --border:rgba(255,255,255,.10);
-    --border2:rgba(255,255,255,.06);
-
-    --text:#f5f5f5;
-    --muted:#999;
-    --muted2:#666;
-
-    --white:#ffffff;
-    --gold:#d8b46a;
-
-    --radius:24px;
-    --max:1250px;
-}
+/* ================================
+   RESET
+================================ */
 
 *{
     margin:0;
@@ -55,81 +32,78 @@ html{
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
+    background:#050505;
+    color:#f5f5f5;
     font-family:Inter,Arial,sans-serif;
     overflow-x:hidden;
 }
 
-/* subtle background */
-
-body::before{
+body:before{
     content:"";
     position:fixed;
     inset:0;
     pointer-events:none;
+    z-index:-1;
 
     background:
-        radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transparent 30%),
-        radial-gradient(circle at 80% 70%,rgba(255,255,255,.025),transparent 35%);
-
-    z-index:-1;
+    radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transparent 30%),
+    radial-gradient(circle at 80% 70%,rgba(255,255,255,.025),transparent 35%);
 }
 
-/* =========================================================
-   INTRO SCREEN
-========================================================= */
+/* ================================
+   INTRO
+================================ */
 
 #intro{
     position:fixed;
     inset:0;
-    z-index:9999;
-
-    background:
-        radial-gradient(circle at center, #171717 0%, #080808 42%, #020202 100%);
+    z-index:99999;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
+    background:
+    radial-gradient(circle at center,#171717 0%,#080808 45%,#020202 100%);
+
+    opacity:1;
+    visibility:visible;
+
+    transition:opacity .8s ease;
 }
 
-#intro.hide{
+#intro.fade-out{
     opacity:0;
-    visibility:hidden;
 }
 
 .intro-container{
     width:min(900px,90%);
     text-align:center;
 
-    animation:introAppear 1.4s ease forwards;
+    animation:introIn 1.2s ease forwards;
 }
 
 .intro-small{
-    font-size:11px;
+    color:#666;
+    font-size:10px;
     letter-spacing:5px;
     text-transform:uppercase;
-    color:#777;
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
 
 .intro-name{
     font-family:"Playfair Display",serif;
-    font-size:clamp(65px,13vw,145px);
+    font-size:clamp(70px,14vw,150px);
     line-height:.9;
-    letter-spacing:-5px;
+    letter-spacing:-6px;
     font-weight:600;
 }
 
 .intro-spelling{
-    margin-top:20px;
-    font-size:12px;
-    letter-spacing:9px;
-    color:#777;
+    color:#666;
+    font-size:11px;
+    letter-spacing:10px;
+    margin-top:22px;
 }
 
 .intro-line{
@@ -140,66 +114,66 @@ body::before{
 }
 
 .intro-info{
-    font-size:15px;
-    color:#b8b8b8;
+    color:#aaa;
+    font-size:14px;
     line-height:2;
 }
 
 .intro-info strong{
     color:#fff;
-    font-weight:600;
 }
 
 .intro-quote{
+    max-width:700px;
     margin:32px auto 0;
-    max-width:650px;
 
     font-family:"Playfair Display",serif;
     font-size:clamp(18px,3vw,27px);
     line-height:1.5;
-
-    color:#e7e7e7;
 }
 
 .intro-quote span{
     display:block;
+
     margin-top:12px;
 
+    color:#555;
+
     font-family:Inter,sans-serif;
-    font-size:10px;
+    font-size:9px;
     letter-spacing:3px;
     text-transform:uppercase;
-    color:#666;
 }
 
 .intro-loader{
-    width:180px;
+    width:190px;
     height:2px;
-    background:#202020;
+    background:#222;
     margin:40px auto 0;
     overflow:hidden;
 }
 
-.intro-loader::after{
+.intro-loader:after{
     content:"";
     display:block;
-    width:0%;
+
+    width:0;
     height:100%;
+
     background:#fff;
 
-    animation:loader 5s linear forwards;
+    animation:loadBar 5s linear forwards;
 }
 
-@keyframes loader{
-    to{
-        width:100%;
-    }
+@keyframes loadBar{
+    from{width:0;}
+    to{width:100%;}
 }
 
-@keyframes introAppear{
+@keyframes introIn{
     from{
         opacity:0;
-        transform:translateY(20px);
+        transform:translateY(25px);
     }
 
     to{
@@ -208,24 +182,33 @@ body::before{
     }
 }
 
-/* =========================================================
+/* ================================
    MAIN SITE
-========================================================= */
+================================ */
 
 #mainSite{
+    display:none;
     opacity:0;
     transform:translateY(20px);
-    transition:1s ease;
 }
 
-#mainSite.show{
-    opacity:1;
-    transform:translateY(0);
+#mainSite.visible{
+    display:block;
+
+    animation:
+    pageIn .9s ease forwards;
 }
 
-/* =========================================================
+@keyframes pageIn{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================================
    HEADER
-========================================================= */
+================================ */
 
 header{
     position:fixed;
@@ -233,17 +216,17 @@ header{
     left:0;
     right:0;
 
-    z-index:1000;
+    z-index:5000;
 
-    background:rgba(5,5,5,.78);
+    background:rgba(5,5,5,.82);
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
 
-    border-bottom:1px solid var(--border2);
+    border-bottom:1px solid rgba(255,255,255,.07);
 }
 
 .navbar{
-    width:min(var(--max),92%);
+    width:min(1250px,92%);
     height:76px;
     margin:auto;
 
@@ -257,8 +240,8 @@ header{
     align-items:center;
     gap:12px;
 
-    text-decoration:none;
     color:#fff;
+    text-decoration:none;
 }
 
 .logo-mark{
@@ -272,7 +255,7 @@ header{
     place-items:center;
 
     font-family:"Playfair Display",serif;
-    font-weight:bold;
+    font-size:17px;
 }
 
 .logo-text{
@@ -283,22 +266,23 @@ header{
 
 .logo-sub{
     display:block;
-    color:#666;
-    font-size:8px;
-    letter-spacing:2px;
     margin-top:2px;
+
+    color:#555;
+    font-size:7px;
+    letter-spacing:2px;
 }
 
 .nav-links{
     display:flex;
-    align-items:center;
     gap:30px;
 }
 
 .nav-links a{
-    color:#999;
+    color:#888;
     text-decoration:none;
     font-size:12px;
+
     transition:.3s;
 }
 
@@ -308,15 +292,15 @@ header{
 
 .nav-actions{
     display:flex;
-    gap:8px;
+    gap:7px;
 }
 
 .nav-icon{
     width:38px;
     height:38px;
 
-    border:1px solid var(--border);
-    border-radius:12px;
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:11px;
 
     display:grid;
     place-items:center;
@@ -329,63 +313,43 @@ header{
 
 .nav-icon:hover{
     color:#fff;
-    background:#171717;
+    background:#151515;
     transform:translateY(-2px);
 }
 
-/* =========================================================
+/* ================================
    HERO
-========================================================= */
+================================ */
 
 .hero{
     min-height:100vh;
 
+    padding:
+    150px 4% 100px;
+
     display:flex;
     align-items:center;
-
-    padding:
-        140px 4% 100px;
-
-    position:relative;
-}
-
-.hero::after{
-    content:"";
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    right:-250px;
-    top:100px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.025);
-    filter:blur(40px);
-
-    pointer-events:none;
 }
 
 .hero-container{
-    width:min(var(--max),100%);
+    width:min(1250px,100%);
     margin:auto;
 
     display:grid;
     grid-template-columns:1.3fr .7fr;
-    gap:70px;
 
+    gap:70px;
     align-items:center;
 }
 
 .eyebrow{
     display:inline-flex;
     align-items:center;
-    gap:10px;
+    gap:9px;
 
-    color:#8c8c8c;
+    color:#777;
 
-    font-size:10px;
+    font-size:9px;
     letter-spacing:3px;
     text-transform:uppercase;
 
@@ -394,21 +358,23 @@ header{
 
 .eyebrow i{
     color:#fff;
+    font-size:7px;
 }
 
 .hero h1{
     font-family:"Playfair Display",serif;
 
-    font-size:clamp(55px,8vw,105px);
+    font-size:clamp(60px,8vw,105px);
 
     line-height:.92;
-    letter-spacing:-4px;
 
     font-weight:500;
+
+    letter-spacing:-5px;
 }
 
 .hero h1 span{
-    color:#777;
+    color:#666;
 }
 
 .hero-description{
@@ -416,21 +382,25 @@ header{
 
     margin-top:30px;
 
-    color:#969696;
-    font-size:15px;
+    color:#888;
+
+    font-size:14px;
     line-height:1.9;
 }
 
 .hero-quote{
-    margin-top:40px;
+    max-width:600px;
+
+    margin-top:38px;
 
     padding-left:20px;
 
     border-left:1px solid #555;
 
-    color:#d5d5d5;
+    color:#ddd;
 
     font-family:"Playfair Display",serif;
+
     font-size:21px;
     line-height:1.5;
 }
@@ -440,62 +410,34 @@ header{
 
     margin-top:10px;
 
+    color:#555;
+
     font-family:Inter,sans-serif;
-    font-size:9px;
+
+    font-size:8px;
     letter-spacing:3px;
-    color:#666;
+    text-transform:uppercase;
 }
 
-/* Hero card */
+/* ================================
+   OFFICE CARD
+================================ */
 
 .office-card{
-    position:relative;
-
     padding:35px;
 
-    border:1px solid var(--border);
+    border:1px solid rgba(255,255,255,.1);
 
-    border-radius:30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.06),
-            rgba(255,255,255,.015)
-        );
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.45);
-
-    overflow:hidden;
-}
-
-.office-card::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
+    border-radius:28px;
 
     background:
-        linear-gradient(
-            135deg,
-            transparent 45%,
-            rgba(255,255,255,.05) 50%,
-            transparent 55%
-        );
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.06),
+        rgba(255,255,255,.012)
+    );
 
-    transform:translateX(-100%);
-    animation:shine 7s infinite;
-}
-
-@keyframes shine{
-    0%,70%{
-        transform:translateX(-100%);
-    }
-
-    100%{
-        transform:translateX(100%);
-    }
+    box-shadow:0 30px 100px rgba(0,0,0,.45);
 }
 
 .card-top{
@@ -503,7 +445,7 @@ header{
     justify-content:space-between;
     align-items:center;
 
-    margin-bottom:50px;
+    margin-bottom:45px;
 }
 
 .status{
@@ -511,105 +453,122 @@ header{
     align-items:center;
     gap:8px;
 
-    font-size:9px;
+    color:#777;
+
+    font-size:8px;
     letter-spacing:2px;
-    color:#888;
     text-transform:uppercase;
 }
 
 .status-dot{
     width:7px;
     height:7px;
-    background:#eee;
+
+    background:#fff;
     border-radius:50%;
+
     box-shadow:0 0 15px #fff;
 }
 
 .card-number{
     color:#444;
-    font-size:11px;
+    font-size:10px;
 }
 
 .office-card h3{
     font-family:"Playfair Display",serif;
+
     font-size:32px;
     font-weight:500;
 }
 
 .office-card p{
-    color:#777;
-    font-size:12px;
+    color:#666;
+
+    font-size:11px;
     line-height:1.8;
-    margin-top:10px;
+
+    margin-top:9px;
 }
 
 .card-divider{
     height:1px;
-    background:var(--border);
+
+    background:rgba(255,255,255,.08);
+
     margin:28px 0;
 }
 
 .card-row{
     display:flex;
     justify-content:space-between;
-    align-items:center;
 
     padding:10px 0;
 }
 
 .card-row span:first-child{
-    color:#666;
-    font-size:10px;
-    text-transform:uppercase;
+    color:#555;
+
+    font-size:8px;
     letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .card-row span:last-child{
-    color:#ddd;
-    font-size:11px;
+    color:#ccc;
+
+    font-size:10px;
 }
 
-/* =========================================================
-   SECTION
-========================================================= */
+/* ================================
+   GENERAL SECTIONS
+================================ */
 
 section{
-    width:min(var(--max),92%);
+    width:min(1250px,92%);
     margin:auto;
+
     padding:110px 0;
 }
 
 .section-header{
     display:flex;
-    align-items:end;
     justify-content:space-between;
+    align-items:end;
 
     margin-bottom:45px;
 }
 
 .section-number{
-    color:#555;
-    font-size:10px;
+    color:#444;
+
+    font-size:9px;
     letter-spacing:3px;
 }
 
 .section-title{
+    margin-top:8px;
+
     font-family:"Playfair Display",serif;
-    font-size:clamp(36px,5vw,65px);
+
+    font-size:clamp(38px,5vw,65px);
+
     font-weight:500;
     letter-spacing:-2px;
 }
 
 .section-description{
     max-width:420px;
-    color:#777;
-    font-size:13px;
+
+    color:#666;
+
+    font-size:12px;
     line-height:1.8;
 }
 
-/* =========================================================
-   CALLOUT GRID
-========================================================= */
+/* ================================
+   CALLOUTS
+================================ */
 
 .callout-grid{
     display:grid;
@@ -618,52 +577,31 @@ section{
 }
 
 .callout{
-    position:relative;
-
-    min-height:250px;
+    min-height:260px;
 
     padding:32px;
 
-    border:1px solid var(--border);
+    border:1px solid rgba(255,255,255,.08);
 
-    border-radius:var(--radius);
+    border-radius:23px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
-        );
+    background:#0d0d0d;
 
-    transition:.45s ease;
-
-    overflow:hidden;
+    transition:.4s;
 }
 
 .callout:hover{
     transform:translateY(-6px);
-    border-color:rgba(255,255,255,.22);
+
+    border-color:rgba(255,255,255,.2);
+
     background:#111;
 }
 
-.callout::after{
-    content:"";
-
-    position:absolute;
-
-    width:160px;
-    height:160px;
-
-    right:-70px;
-    bottom:-80px;
-
-    border:1px solid rgba(255,255,255,.05);
-    border-radius:50%;
-}
-
 .callout-number{
-    color:#555;
-    font-size:11px;
+    color:#444;
+
+    font-size:9px;
     letter-spacing:3px;
 }
 
@@ -674,23 +612,25 @@ section{
     display:grid;
     place-items:center;
 
-    border:1px solid var(--border);
-    border-radius:14px;
-
-    color:#ddd;
-
     margin:20px 0;
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:13px;
+
+    color:#ccc;
 }
 
 .callout h3{
-    font-size:20px;
+    font-size:19px;
     font-weight:600;
 }
 
 .callout p{
-    color:#777;
-    font-size:12px;
+    color:#666;
+
+    font-size:11px;
     line-height:1.8;
+
     margin-top:10px;
 }
 
@@ -699,77 +639,98 @@ section{
     align-items:center;
     gap:8px;
 
-    margin-top:22px;
+    margin-top:20px;
 
     color:#fff;
+
     text-decoration:none;
 
-    font-size:10px;
+    font-size:9px;
     letter-spacing:2px;
     text-transform:uppercase;
 }
 
-.callout a i{
-    font-size:9px;
+.callout a:hover{
+    color:#aaa;
 }
 
-/* =========================================================
+.email-list{
+    margin-top:18px;
+}
+
+.email-list a{
+    display:block;
+
+    margin-top:8px;
+    padding:9px 0;
+
+    color:#aaa;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    font-size:10px;
+
+    letter-spacing:0;
+
+    text-transform:none;
+}
+
+/* ================================
    ACADEMICS
-========================================================= */
+================================ */
 
 .academic-panel{
     display:grid;
     grid-template-columns:1fr 1fr;
 
-    border:1px solid var(--border);
-    border-radius:30px;
-
     overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:28px;
 }
 
 .academic-left{
     padding:55px;
 
     background:
-        linear-gradient(
-            145deg,
-            #151515,
-            #090909
-        );
+    linear-gradient(145deg,#151515,#080808);
 }
 
 .academic-left h3{
     font-family:"Playfair Display",serif;
+
     font-size:42px;
     font-weight:500;
 }
 
 .academic-left p{
-    color:#777;
-    font-size:13px;
+    color:#666;
+
+    font-size:12px;
     line-height:1.9;
+
     margin-top:20px;
 }
 
 .primary-button{
     display:inline-flex;
     align-items:center;
-    gap:12px;
+    gap:10px;
 
     margin-top:30px;
 
     padding:14px 20px;
 
-    border-radius:12px;
-
     background:#fff;
+
     color:#050505;
+
+    border-radius:11px;
 
     text-decoration:none;
 
-    font-size:11px;
+    font-size:10px;
     font-weight:700;
-    letter-spacing:1px;
 
     transition:.3s;
 }
@@ -782,14 +743,15 @@ section{
 .academic-right{
     padding:55px;
 
-    border-left:1px solid var(--border);
-
     background:#0b0b0b;
+
+    border-left:1px solid rgba(255,255,255,.08);
 }
 
 .info-item{
-    padding:22px 0;
-    border-bottom:1px solid var(--border);
+    padding:20px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .info-item:last-child{
@@ -799,71 +761,54 @@ section{
 .info-item span{
     display:block;
 
-    color:#555;
-    font-size:9px;
+    margin-bottom:7px;
+
+    color:#444;
+
+    font-size:8px;
     letter-spacing:2px;
     text-transform:uppercase;
-
-    margin-bottom:7px;
 }
 
 .info-item strong{
-    font-size:14px;
+    color:#ccc;
+
+    font-size:13px;
     font-weight:500;
 }
 
-/* =========================================================
+/* ================================
    CONNECT
-========================================================= */
+================================ */
 
 .connect-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
+
     gap:18px;
 }
 
 .connect-card{
     padding:35px;
 
-    border:1px solid var(--border);
-    border-radius:22px;
-
     background:#0c0c0c;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
 }
 
 .connect-card h3{
-    font-size:21px;
+    font-size:20px;
 }
 
 .connect-card p{
-    color:#777;
-    font-size:12px;
+    color:#666;
+
+    font-size:11px;
     line-height:1.8;
+
     margin-top:12px;
-}
-
-.email-list{
-    margin-top:22px;
-}
-
-.email-list a{
-    display:block;
-
-    color:#ddd;
-    text-decoration:none;
-
-    padding:10px 0;
-
-    font-size:12px;
-
-    border-bottom:1px solid var(--border2);
-
-    transition:.3s;
-}
-
-.email-list a:hover{
-    color:#fff;
-    padding-left:7px;
 }
 
 .social-links{
@@ -877,10 +822,11 @@ section{
 .social-links a{
     padding:11px 15px;
 
-    border:1px solid var(--border);
-    border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:11px;
 
-    color:#aaa;
+    color:#999;
+
     text-decoration:none;
 
     font-size:10px;
@@ -893,93 +839,96 @@ section{
     background:#171717;
 }
 
-/* =========================================================
-   RELEASES
-========================================================= */
+/* ================================
+   UPCOMING
+================================ */
 
 .release-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
+
     gap:16px;
 }
 
 .release{
     padding:30px;
 
-    border:1px solid var(--border);
-    border-radius:22px;
-
     display:flex;
     justify-content:space-between;
     gap:20px;
 
     background:#0c0c0c;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
 }
 
 .release-status{
-    color:#777;
-    font-size:9px;
+    color:#555;
+
+    font-size:8px;
     letter-spacing:2px;
     text-transform:uppercase;
 }
 
 .release h3{
     margin-top:12px;
-    font-size:18px;
+
+    font-size:17px;
 }
 
 .release p{
     margin-top:7px;
-    color:#666;
-    font-size:11px;
+
+    color:#555;
+
+    font-size:10px;
 }
 
 .date{
+    color:#ddd;
+
     white-space:nowrap;
 
     font-family:"Playfair Display",serif;
-    font-size:19px;
 
-    color:#ddd;
+    font-size:18px;
 }
 
-/* =========================================================
+/* ================================
    ABOUT
-========================================================= */
-
-.about{
-    position:relative;
-}
+================================ */
 
 .about-panel{
     padding:60px;
 
-    border:1px solid var(--border);
+    border:1px solid rgba(255,255,255,.08);
+
     border-radius:30px;
 
     background:
-        radial-gradient(
-            circle at top right,
-            rgba(255,255,255,.07),
-            transparent 35%
-        ),
-        #0a0a0a;
+    radial-gradient(circle at top right,rgba(255,255,255,.06),transparent 35%),
+    #0a0a0a;
 }
 
 .about-panel h3{
     font-family:"Playfair Display",serif;
+
     font-size:clamp(40px,5vw,65px);
+
     font-weight:500;
 }
 
 .about-panel > p{
-    max-width:750px;
-
-    color:#777;
-    line-height:1.9;
-    font-size:13px;
+    max-width:760px;
 
     margin-top:20px;
+
+    color:#666;
+
+    font-size:12px;
+    line-height:1.9;
 }
 
 .highlight-list{
@@ -994,104 +943,113 @@ section{
 .highlight{
     padding:22px;
 
-    border:1px solid var(--border);
-    border-radius:17px;
-
     background:#101010;
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:17px;
 }
 
 .highlight i{
     color:#aaa;
-    margin-bottom:20px;
+
+    margin-bottom:18px;
 }
 
 .highlight h4{
-    font-size:13px;
+    font-size:12px;
     line-height:1.5;
 }
 
 .highlight p{
-    color:#666;
-    font-size:10px;
-    line-height:1.6;
+    color:#555;
+
     margin-top:8px;
+
+    font-size:9px;
+    line-height:1.7;
 }
 
-/* =========================================================
-   QUOTE SECTION
-========================================================= */
+/* ================================
+   FINAL QUOTE
+================================ */
 
 .quote-section{
-    text-align:center;
+    width:min(1000px,90%);
+    margin:auto;
 
-    padding:
-        130px 20px
-        150px;
+    padding:130px 0 150px;
+
+    text-align:center;
 }
 
 .quote-mark{
-    font-family:"Playfair Display",serif;
-    font-size:80px;
     color:#333;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:80px;
     line-height:.5;
 }
 
 .final-quote{
-    max-width:850px;
     margin:30px auto;
 
     font-family:"Playfair Display",serif;
+
     font-size:clamp(27px,5vw,52px);
+
     line-height:1.25;
     letter-spacing:-1px;
 }
 
 .quote-author{
-    color:#555;
+    color:#444;
 
-    font-size:9px;
+    font-size:8px;
     letter-spacing:4px;
     text-transform:uppercase;
 }
 
-/* =========================================================
+/* ================================
    FOOTER
-========================================================= */
+================================ */
 
 footer{
-    border-top:1px solid var(--border);
-
     padding:35px 4%;
+
+    border-top:1px solid rgba(255,255,255,.07);
 }
 
 .footer-inner{
-    width:min(var(--max),100%);
+    width:min(1250px,100%);
     margin:auto;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:20px;
 }
 
 .footer-brand{
-    color:#777;
-    font-size:11px;
+    color:#555;
+
+    font-size:10px;
 }
 
 .footer-brand strong{
-    color:#ddd;
+    color:#aaa;
 }
 
 .footer-right{
-    color:#555;
-    font-size:9px;
+    color:#444;
+
+    font-size:8px;
     letter-spacing:2px;
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/* ================================
+   MOBILE
+================================ */
 
 @media(max-width:900px){
 
@@ -1107,17 +1065,13 @@ footer{
         padding-top:130px;
     }
 
-    .office-card{
-        max-width:600px;
-    }
-
     .academic-panel{
         grid-template-columns:1fr;
     }
 
     .academic-right{
         border-left:0;
-        border-top:1px solid var(--border);
+        border-top:1px solid rgba(255,255,255,.08);
     }
 
     .highlight-list{
@@ -1141,10 +1095,6 @@ footer{
         margin-top:15px;
     }
 
-    .hero h1{
-        letter-spacing:-3px;
-    }
-
     .academic-left,
     .academic-right,
     .about-panel{
@@ -1159,17 +1109,14 @@ footer{
         font-size:12px;
     }
 
-    .final-quote{
-        font-size:31px;
-    }
-
     .footer-inner{
         flex-direction:column;
         align-items:flex-start;
+        gap:15px;
     }
 }
 
-@media(max-width:430px){
+@media(max-width:450px){
 
     .navbar{
         height:68px;
@@ -1179,14 +1126,9 @@ footer{
         display:none;
     }
 
-    .nav-actions{
-        gap:5px;
-    }
-
     .nav-icon{
-        width:34px;
-        height:34px;
-        border-radius:10px;
+        width:33px;
+        height:33px;
     }
 
     .hero{
@@ -1198,23 +1140,27 @@ footer{
         width:90%;
     }
 
+    .office-card{
+        padding:25px;
+    }
+
     .callout{
         padding:26px;
     }
 
-    .office-card{
-        padding:25px;
+    .final-quote{
+        font-size:30px;
     }
 }
 
 </style>
 </head>
 
-
 <body>
 
+
 <!-- =========================================================
-     INTRO
+     INTRO SCREEN
 ========================================================= -->
 
 <div id="intro">
@@ -1238,6 +1184,7 @@ footer{
         <div class="intro-info">
 
             <strong>STICHÉ • PRERANA ALUMNUS • BATCH 3</strong>
+
             <br>
 
             Ministry of Education, India
@@ -1245,6 +1192,7 @@ footer{
             <br><br>
 
             <strong>Sakura Science Club Member</strong>
+
             <br>
 
             Japan
@@ -1276,7 +1224,7 @@ footer{
 <div id="mainSite">
 
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -1286,4 +1234,167 @@ footer{
 
         <div class="logo-mark">
             M
-   
+        </div>
+
+        <div>
+
+            <div class="logo-text">
+                MANKIT
+            </div>
+
+            <span class="logo-sub">
+                DIGITAL OFFICE
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#academics">
+            Academics
+        </a>
+
+        <a href="#connect">
+            Connect
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+    </div>
+
+
+    <!-- FOUR ICONS -->
+
+    <div class="nav-actions">
+
+        <a href="#academics"
+           class="nav-icon"
+           title="Academics">
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+        </a>
+
+        <a href="#connect"
+           class="nav-icon"
+           title="Appointment">
+
+            <i class="fa-regular fa-calendar-check"></i>
+
+        </a>
+
+        <a href="mailto:mankitmankit7@gmail.com"
+           class="nav-icon"
+           title="Email">
+
+            <i class="fa-regular fa-envelope"></i>
+
+        </a>
+
+        <a href="#about"
+           class="nav-icon"
+           title="About">
+
+            <i class="fa-regular fa-user"></i>
+
+        </a>
+
+    </div>
+
+</nav>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<main id="home">
+
+<section class="hero">
+
+<div class="hero-container">
+
+
+<div>
+
+    <div class="eyebrow">
+
+        <i class="fa-solid fa-circle"></i>
+
+        MANKIT OFFICE LIFE
+
+    </div>
+
+
+    <h1>
+
+        Ideas.
+        <br>
+
+        <span>Learning.</span>
+        <br>
+
+        Impact.
+
+    </h1>
+
+
+    <p class="hero-description">
+
+        A personal digital office for academic resources,
+        ideas, communication and continuous growth —
+        built around engineering, technology and purpose.
+
+    </p>
+
+
+    <div class="hero-quote">
+
+        "Your background introduces you.
+        Your work defines you."
+
+        <small>
+            Office Philosophy
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- OFFICE CARD -->
+
+<div class="office-card">
+
+    <div class="card-top">
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            Digital Office Active
+
+        </div>
+
+        <div class="card-number">
+            01 / 05
+        </div>
+
+    </div>
+
+
+    <h3>
+        Mankit Office Life
+    </h3>
+
+    <p>
+        Academics   
