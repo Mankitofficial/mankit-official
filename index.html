@@ -3,309 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#05070a">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="Mankit Official Digital Office — Academics, Technology, Communication & Journey.">
 
 <title>Mankit | Official Digital Office</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
-
-:root {
-    --bg: #05070a;
-    --bg2: #0b0f15;
-    --text: #f5f6f8;
-    --muted: #9da6b5;
-    --gold: #d7b36a;
-    --gold-light: #f1d99d;
-    --green: #70d49a;
-    --border: rgba(255,255,255,0.10);
-}
-
-
 /* =========================================================
    RESET
 ========================================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(216,179,106,0.13),
-            transparent 35%
-        ),
-        linear-gradient(
-            180deg,
-            #080b10 0%,
-            #05070a 100%
-        );
-
-    color: var(--text);
-    font-family: "Inter", sans-serif;
-    overflow-x: hidden;
+body{
+    background:#050505;
+    color:#f5f2e9;
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+a{
+    color:inherit;
+}
+
+::selection{
+    background:#c9a45c;
+    color:#050505;
 }
 
 
 /* =========================================================
-   INTRO SCREEN
+   BACKGROUND
 ========================================================= */
 
-#intro {
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
 
-    position: fixed;
-    inset: 0;
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(201,164,92,.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 65%,
+            rgba(201,164,92,.07),
+            transparent 28%
+        ),
+        #050505;
+}
 
-    z-index: 99999;
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px
+        );
 
-    text-align: center;
+    background-size:60px 60px;
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 85%
+    );
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
 
     background:
         radial-gradient(
             circle at center,
-            #111821 0%,
-            #07090d 50%,
-            #030405 100%
+            #17130c 0%,
+            #090807 38%,
+            #030303 78%
         );
 
     transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
+        opacity 1s cubic-bezier(.77,0,.18,1),
+        visibility 1s;
 }
 
-#intro.hide {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+#intro.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 }
 
-.intro-glow {
-
-    position: absolute;
-
-    width: 650px;
-    height: 650px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(215,179,106,0.13),
-            transparent 65%
-        );
-
-    filter: blur(10px);
-
-    animation: glowPulse 4s ease-in-out infinite;
+.intro-wrap{
+    width:min(900px,90%);
 }
 
-@keyframes glowPulse {
+.intro-top-line{
+    width:110px;
+    height:1px;
+    margin:0 auto 28px;
 
-    0%,100% {
-        transform: scale(0.95);
-        opacity: 0.6;
-    }
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #d7b56a,
+        transparent
+    );
 
-    50% {
-        transform: scale(1.08);
-        opacity: 1;
-    }
+    box-shadow:0 0 18px rgba(215,181,106,.55);
 }
 
-.intro-content {
-
-    position: relative;
-    z-index: 2;
-
-    width: min(850px, 92%);
-
-    padding: 30px;
+.intro-small{
+    color:#9d9a92;
+    font-size:10px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    margin-bottom:18px;
 }
 
-.intro-eyebrow {
+.intro-title{
+    font-size:clamp(58px,13vw,145px);
+    line-height:.9;
+    letter-spacing:10px;
+    font-weight:900;
 
-    color: var(--gold);
+    background:linear-gradient(
+        105deg,
+        #fff,
+        #d7b56a 45%,
+        #fff 70%
+    );
 
-    font-size: 11px;
-
-    letter-spacing: 5px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 25px;
-
-    opacity: 0;
-
-    animation: introReveal 1s 0.2s forwards;
-}
-
-.intro-name {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(60px, 11vw, 125px);
-
-    line-height: 0.9;
-
-    letter-spacing: -4px;
-
-    background:
-        linear-gradient(
-            120deg,
-            #ffffff,
-            #d7b36a,
-            #ffffff
-        );
-
-    background-size: 200% auto;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    opacity: 0;
-
-    transform: translateY(25px);
+    background-size:200% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 
     animation:
-        introName 1.4s 0.4s forwards,
-        shine 4s 1.5s linear infinite;
+        introTitle 2.5s ease forwards,
+        goldFlow 4s linear infinite;
 }
 
-@keyframes shine {
-    to {
-        background-position: 200% center;
+.intro-subtitle{
+    margin-top:27px;
+
+    color:#aaa59b;
+
+    font-size:11px;
+    line-height:2.2;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.intro-quote{
+    margin-top:38px;
+
+    font-family:Georgia,serif;
+    font-size:clamp(16px,3vw,24px);
+    font-style:italic;
+    color:#ddd8ce;
+}
+
+.intro-quote span{
+    color:#d7b56a;
+}
+
+.intro-bottom-line{
+    width:55px;
+    height:1px;
+    margin:28px auto 0;
+
+    background:#d7b56a;
+    opacity:.7;
+}
+
+@keyframes introTitle{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.96);
+        filter:blur(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:blur(0);
     }
 }
 
-.intro-info {
-
-    margin-top: 25px;
-
-    color: #c9d0da;
-
-    font-size: clamp(14px, 2vw, 19px);
-
-    line-height: 1.8;
-
-    opacity: 0;
-
-    animation: introReveal 1s 1.2s forwards;
-}
-
-.intro-quote {
-
-    max-width: 680px;
-
-    margin: 25px auto 0;
-
-    color: white;
-
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(15px, 2vw, 21px);
-
-    line-height: 1.7;
-
-    opacity: 0;
-
-    animation: introReveal 1s 2s forwards;
-}
-
-@keyframes introReveal {
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes introName {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* Loading */
-
-.intro-bottom {
-
-    position: absolute;
-
-    bottom: 48px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-}
-
-.loading-text {
-
-    color: #778293;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 12px;
-}
-
-.progress {
-
-    width: 180px;
-
-    height: 2px;
-
-    background: rgba(255,255,255,0.12);
-
-    overflow: hidden;
-}
-
-.progress span {
-
-    display: block;
-
-    width: 0%;
-
-    height: 100%;
-
-    background: var(--gold);
-
-    animation: loading 5s linear forwards;
-}
-
-@keyframes loading {
-    to {
-        width: 100%;
+@keyframes goldFlow{
+    to{
+        background-position:200% center;
     }
 }
 
@@ -314,22 +233,8 @@ a {
    MAIN APP
 ========================================================= */
 
-#app {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
-}
-
-#app.visible {
-
-    opacity: 1;
-
-    visibility: visible;
+#app{
+    min-height:100vh;
 }
 
 
@@ -337,294 +242,352 @@ a {
    NAVBAR
 ========================================================= */
 
-header {
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:5000;
 
-    position: sticky;
+    height:76px;
 
-    top: 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    z-index: 500;
+    padding:0 6%;
 
-    background:
-        rgba(5,7,10,0.86);
+    background:rgba(5,5,5,.72);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
 
-    backdrop-filter: blur(22px);
-
-    border-bottom:
-        1px solid var(--border);
+    border-bottom:1px solid rgba(215,181,106,.10);
 }
 
-.navbar {
+.logo{
+    text-decoration:none;
 
-    max-width: 1250px;
+    font-size:19px;
+    font-weight:900;
+    letter-spacing:4px;
 
-    min-height: 76px;
-
-    margin: auto;
-
-    padding: 0 25px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
+    color:#d7b56a;
 }
 
-.logo {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 26px;
-
-    white-space: nowrap;
+.logo span{
+    color:#777;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-left:5px;
 }
 
-.logo span {
-    color: var(--gold);
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
+
+    list-style:none;
 }
 
+.nav-links a{
+    position:relative;
 
-/* Navigation */
+    text-decoration:none;
 
-.nav-links {
+    color:#92908b;
 
-    display: flex;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 
-    align-items: center;
-
-    gap: 5px;
+    transition:.3s;
 }
 
-.nav-link {
+.nav-links a::after{
+    content:"";
 
-    padding: 9px 12px;
+    position:absolute;
+    left:50%;
+    bottom:-9px;
 
-    border-radius: 8px;
+    width:0;
+    height:1px;
 
-    color: #aeb6c2;
+    background:#d7b56a;
 
-    font-size: 10px;
-
-    letter-spacing: 1.5px;
-
-    text-transform: uppercase;
-
-    transition: 0.25s ease;
+    transform:translateX(-50%);
+    transition:.3s;
 }
 
-.nav-link:hover,
-.nav-link.active {
-
-    color: white;
-
-    background:
-        rgba(215,179,106,0.08);
+.nav-links a:hover,
+.nav-links a.active{
+    color:#e4c783;
 }
 
-.nav-link.active {
-
-    box-shadow:
-        inset 0 -1px var(--gold);
-}
-
-
-/* Status */
-
-.portal-status {
-
-    color: #8e98a8;
-
-    font-size: 9px;
-
-    letter-spacing: 1.5px;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
-}
-
-.status-dot {
-
-    width: 7px;
-    height: 7px;
-
-    display: inline-block;
-
-    margin-right: 7px;
-
-    border-radius: 50%;
-
-    background: var(--green);
-
-    box-shadow:
-        0 0 10px var(--green);
+.nav-links a:hover::after,
+.nav-links a.active::after{
+    width:18px;
 }
 
 
 /* =========================================================
-   HERO / HOME
+   HERO
 ========================================================= */
 
-#home {
-    scroll-margin-top: 90px;
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:150px 7% 100px;
+
+    position:relative;
 }
 
-.hero {
+.hero::before{
+    content:"";
 
-    max-width: 1250px;
+    position:absolute;
 
-    margin: auto;
+    width:500px;
+    height:500px;
 
-    padding:
-        115px 25px 70px;
+    border-radius:50%;
+
+    background:rgba(215,181,106,.06);
+
+    filter:blur(100px);
+
+    pointer-events:none;
 }
 
-.hero-label {
-
-    color: var(--gold);
-
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
+.hero-content{
+    position:relative;
+    z-index:2;
 }
 
-.hero h1 {
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 
-    max-width: 920px;
+    color:#b6b1a6;
 
-    margin-top: 18px;
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
 
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size:
-        clamp(50px, 8vw, 92px);
-
-    line-height: 0.98;
-
-    letter-spacing: -3px;
+    margin-bottom:27px;
 }
 
-.hero-description {
+.eyebrow::before,
+.eyebrow::after{
+    content:"";
 
-    max-width: 700px;
+    width:28px;
+    height:1px;
 
-    margin-top: 27px;
-
-    color: var(--muted);
-
-    font-size: 16px;
-
-    line-height: 1.9;
+    background:#c9a45c;
 }
 
-.quick-nav {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin-top: 32px;
+.hero h1{
+    font-size:clamp(55px,11vw,125px);
+    line-height:.88;
+    letter-spacing:8px;
+    font-weight:900;
 }
 
-.quick-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        11px 16px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 9px;
-
-    color: #c9d0da;
-
-    font-size: 11px;
-
-    transition: 0.25s ease;
+.hero h1 .gold{
+    color:#d7b56a;
 }
 
-.quick-button:hover {
+.hero-tagline{
+    max-width:680px;
 
-    color: var(--gold-light);
+    margin:35px auto 0;
 
-    border-color:
-        rgba(215,179,106,0.45);
+    color:#99958d;
 
-    transform:
-        translateY(-2px);
+    font-size:14px;
+    line-height:2;
+
+    letter-spacing:.5px;
 }
 
-.gold-line {
+.hero-quote{
+    margin:27px auto 0;
 
-    width: 100%;
+    color:#ded9cf;
 
-    height: 1px;
+    font-family:Georgia,serif;
+    font-style:italic;
 
-    margin-top: 50px;
+    font-size:17px;
+}
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            transparent
-        );
+.hero-quote span{
+    color:#d7b56a;
+}
 
-    opacity: 0.45;
+.hero-actions{
+    margin-top:40px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:13px;
+}
+
+.btn{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
+    min-width:170px;
+
+    padding:14px 22px;
+
+    border-radius:4px;
+
+    text-decoration:none;
+
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    transition:
+        transform .3s,
+        box-shadow .3s,
+        background .3s,
+        color .3s;
+}
+
+.btn-gold{
+    background:#d7b56a;
+    color:#090806;
+}
+
+.btn-gold:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(215,181,106,.22);
+}
+
+.btn-dark{
+    border:1px solid rgba(215,181,106,.28);
+    color:#ddd5c5;
+    background:rgba(255,255,255,.025);
+}
+
+.btn-dark:hover{
+    transform:translateY(-3px);
+    border-color:#d7b56a;
+    color:#d7b56a;
+}
+
+.scroll-note{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+
+    color:#555;
+
+    font-size:8px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.scroll-note::after{
+    content:"";
+    display:block;
+
+    width:1px;
+    height:30px;
+
+    margin:10px auto 0;
+
+    background:linear-gradient(
+        #d7b56a,
+        transparent
+    );
 }
 
 
 /* =========================================================
-   SECTION HEADINGS
+   GENERAL SECTIONS
 ========================================================= */
 
-.section-heading {
-
-    max-width: 1250px;
-
-    margin: auto;
-
-    padding:
-        25px 25px 10px;
+section{
+    padding:110px 7%;
+    scroll-margin-top:80px;
 }
 
-.section-kicker {
-
-    color: var(--gold);
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
+.section-head{
+    max-width:750px;
+    margin-bottom:50px;
 }
 
-.section-heading h2 {
+.section-number{
+    color:#d7b56a;
 
-    margin-top: 8px;
+    font-size:9px;
+    letter-spacing:4px;
 
-    font-family:
-        "Playfair Display",
-        serif;
+    margin-bottom:13px;
+}
 
-    font-size:
-        clamp(32px, 5vw, 52px);
+.section-title{
+    font-size:clamp(35px,6vw,62px);
+    line-height:1;
+
+    letter-spacing:-1px;
+
+    margin-bottom:20px;
+}
+
+.section-title span{
+    color:#d7b56a;
+}
+
+.section-description{
+    color:#89857e;
+
+    font-size:14px;
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   GOLD DIVIDER
+========================================================= */
+
+.gold-divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    margin:0 7%;
+}
+
+.gold-divider span:first-child{
+    width:70px;
+}
+
+.gold-divider span{
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        #d7b56a,
+        transparent
+    );
+
+    opacity:.45;
 }
 
 
@@ -632,164 +595,144 @@ header {
    CARDS
 ========================================================= */
 
-.cards {
-
-    max-width: 1250px;
-
-    margin: auto;
-
-    padding:
-        15px 25px 85px;
-
-    display: grid;
+.cards{
+    display:grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(auto-fit,minmax(250px,1fr));
 
-    gap: 20px;
+    gap:18px;
 }
 
-.card {
+.card{
+    position:relative;
 
-    position: relative;
+    min-height:275px;
 
-    min-height: 260px;
+    padding:32px;
 
-    padding: 34px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 20px;
+    border:1px solid rgba(255,255,255,.075);
+    border-radius:12px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,0.055),
-            rgba(255,255,255,0.015)
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
         );
 
-    overflow: hidden;
+    overflow:hidden;
 
     transition:
-        transform 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
+        transform .35s,
+        border-color .35s,
+        background .35s;
 }
 
-.card::before {
+.card::before{
+    content:"";
 
-    content: "";
+    position:absolute;
+    top:0;
+    left:0;
 
-    position: absolute;
+    width:55px;
+    height:1px;
 
-    width: 170px;
-    height: 170px;
+    background:#d7b56a;
+}
 
-    right: -80px;
-    bottom: -80px;
+.card::after{
+    content:"";
 
-    border-radius: 50%;
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    right:-70px;
+    bottom:-70px;
+
+    border-radius:50%;
+
+    background:rgba(215,181,106,.08);
+
+    filter:blur(20px);
+}
+
+.card:hover{
+    transform:translateY(-7px);
+
+    border-color:rgba(215,181,106,.32);
 
     background:
-        radial-gradient(
-            circle,
-            rgba(215,179,106,0.12),
-            transparent 70%
+        linear-gradient(
+            145deg,
+            rgba(215,181,106,.075),
+            rgba(255,255,255,.015)
         );
-
-    pointer-events: none;
 }
 
-.card:hover {
-
-    transform:
-        translateY(-6px);
-
-    border-color:
-        rgba(215,179,106,0.42);
-
-    box-shadow:
-        0 25px 70px
-        rgba(0,0,0,0.32);
+.card-icon{
+    font-size:25px;
+    margin-bottom:25px;
 }
 
-.card-number {
+.card-label{
+    color:#d7b56a;
 
-    color: var(--gold);
+    font-size:8px;
+    letter-spacing:3px;
 
-    font-size: 10px;
-
-    letter-spacing: 2px;
+    margin-bottom:10px;
 }
 
-.card h2 {
-
-    margin-top: 13px;
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 30px;
-
-    font-weight: 600;
+.card h3{
+    font-size:20px;
+    margin-bottom:14px;
 }
 
-.card p {
+.card p{
+    color:#85817a;
 
-    margin-top: 12px;
-
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 1.7;
+    font-size:13px;
+    line-height:1.8;
 }
 
+.card-link{
+    display:inline-block;
 
-/* Buttons */
+    margin-top:23px;
 
-.button {
+    color:#d7b56a;
 
-    display: inline-flex;
+    text-decoration:none;
 
-    align-items: center;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:2px;
 
-    gap: 10px;
-
-    margin-top: 24px;
-
-    padding:
-        11px 17px;
-
-    border:
-        1px solid
-        rgba(215,179,106,0.45);
-
-    border-radius: 9px;
-
-    background:
-        rgba(215,179,106,0.055);
-
-    color:
-        #f1e5c9;
-
-    font-size: 12px;
-
-    transition:
-        0.25s ease;
-
-    cursor: pointer;
+    transition:.3s;
 }
 
-.button:hover {
+.card-link:hover{
+    letter-spacing:3px;
+}
 
-    background:
-        rgba(215,179,106,0.13);
+.coming{
+    display:inline-block;
 
-    transform:
-        translateX(4px);
+    margin-top:22px;
+
+    padding:7px 12px;
+
+    border:1px solid rgba(215,181,106,.25);
+    border-radius:30px;
+
+    color:#d7b56a;
+
+    font-size:8px;
+    letter-spacing:2px;
 }
 
 
@@ -797,249 +740,184 @@ header {
    CONNECT
 ========================================================= */
 
-.contact-list {
+.connect-layout{
+    display:grid;
 
-    margin-top: 20px;
+    grid-template-columns:
+        1fr 1.2fr;
 
-    display: grid;
+    gap:45px;
 
-    gap: 11px;
+    align-items:start;
 }
 
-.contact-link {
+.contact-panel{
+    padding:35px;
 
-    color: #d4dae2;
-
-    font-size: 13px;
-
-    transition: 0.2s ease;
-}
-
-.contact-link:hover {
-
-    color: var(--gold);
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-section {
-
-    max-width: 1250px;
-
-    margin: auto;
-
-    padding:
-        30px 25px 100px;
-}
-
-.about-panel {
-
-    position: relative;
-
-    padding: 40px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 22px;
+    border:1px solid rgba(215,181,106,.18);
+    border-radius:12px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(215,179,106,0.055),
-            rgba(255,255,255,0.015)
+            rgba(215,181,106,.06),
+            rgba(255,255,255,.015)
         );
-
-    overflow: hidden;
 }
 
-.about-top {
+.contact-item{
+    padding:19px 0;
 
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    align-items: flex-start;
-
-    justify-content: space-between;
-
-    gap: 25px;
+    border-bottom:1px solid rgba(255,255,255,.06);
 }
 
-.about-title h2 {
-
-    margin-top: 8px;
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size:
-        clamp(35px, 5vw, 58px);
+.contact-item:last-child{
+    border-bottom:none;
 }
 
-.live-badge {
+.contact-label{
+    color:#d7b56a;
 
-    display: inline-flex;
+    font-size:8px;
+    letter-spacing:3px;
+    text-transform:uppercase;
 
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        9px 13px;
-
-    border:
-        1px solid
-        rgba(112,212,154,0.25);
-
-    border-radius: 50px;
-
-    color:
-        #a9e7c3;
-
-    background:
-        rgba(112,212,154,0.06);
-
-    font-size: 9px;
-
-    letter-spacing: 1.5px;
-
-    text-transform: uppercase;
-
-    white-space: nowrap;
+    margin-bottom:7px;
 }
 
-.live-dot {
+.contact-item a{
+    color:#c6c2ba;
 
-    width: 6px;
-    height: 6px;
+    text-decoration:none;
 
-    border-radius: 50%;
+    font-size:13px;
 
-    background:
-        var(--green);
-
-    box-shadow:
-        0 0 9px var(--green);
+    transition:.3s;
 }
 
-.about-intro {
-
-    position: relative;
-
-    z-index: 2;
-
-    max-width: 820px;
-
-    margin-top: 18px;
-
-    color: var(--muted);
-
-    font-size: 14px;
-
-    line-height: 1.9;
+.contact-item a:hover{
+    color:#d7b56a;
 }
 
 
-/* Achievements */
+/* =========================================================
+   ABOUT / JOURNEY
+========================================================= */
 
-.achievement-grid {
-
-    position: relative;
-
-    z-index: 2;
-
-    margin-top: 35px;
-
-    display: grid;
+.journey{
+    display:grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(2,1fr);
 
-    gap: 12px;
+    gap:18px;
 }
 
-.achievement {
+.journey-card{
+    padding:30px;
 
-    padding:
-        20px;
+    border:1px solid rgba(255,255,255,.065);
+    border-radius:10px;
 
-    border:
-        1px solid
-        rgba(255,255,255,0.07);
+    background:rgba(255,255,255,.018);
 
-    border-radius: 14px;
-
-    background:
-        rgba(0,0,0,0.16);
-
-    transition:
-        0.25s ease;
+    transition:.3s;
 }
 
-.achievement:hover {
-
-    border-color:
-        rgba(215,179,106,0.25);
-
-    transform:
-        translateY(-3px);
+.journey-card:hover{
+    border-color:rgba(215,181,106,.3);
 }
 
-.achievement-icon {
+.journey-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
 
-    color:
-        var(--gold);
-
-    font-size: 18px;
+    margin-bottom:20px;
 }
 
-.achievement h3 {
+.journey-year{
+    color:#d7b56a;
 
-    margin-top: 10px;
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 19px;
+    font-size:9px;
+    letter-spacing:2px;
 }
 
-.achievement p {
-
-    margin-top: 7px;
-
-    color:
-        #8f99a8;
-
-    font-size: 12px;
-
-    line-height: 1.6;
+.journey-card h3{
+    font-size:19px;
+    margin-bottom:10px;
 }
 
-.about-note {
+.journey-card p{
+    color:#85817a;
 
-    position: relative;
+    font-size:13px;
+    line-height:1.8;
+}
 
-    z-index: 2;
 
-    margin-top: 25px;
+/* =========================================================
+   FINAL QUOTE
+========================================================= */
 
-    padding-top: 20px;
+.final-quote{
+    padding:120px 7%;
 
-    border-top:
-        1px solid var(--border);
+    text-align:center;
 
-    color:
-        #778293;
+    position:relative;
+}
 
-    font-size: 11px;
+.final-quote::before,
+.final-quote::after{
+    content:"";
+
+    display:block;
+
+    width:90px;
+    height:1px;
+
+    margin:0 auto 35px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #d7b56a,
+        transparent
+    );
+}
+
+.final-quote::after{
+    margin:35px auto 0;
+}
+
+.final-quote blockquote{
+    max-width:850px;
+
+    margin:auto;
+
+    font-family:Georgia,serif;
+
+    font-size:clamp(22px,4vw,38px);
+    line-height:1.5;
+
+    color:#ddd8ce;
+}
+
+.final-quote blockquote span{
+    color:#d7b56a;
+}
+
+.final-quote small{
+    display:block;
+
+    margin-top:25px;
+
+    color:#68645d;
+
+    font-size:8px;
+    letter-spacing:4px;
+    text-transform:uppercase;
 }
 
 
@@ -1047,44 +925,52 @@ header {
    FOOTER
 ========================================================= */
 
-footer {
+footer{
+    padding:55px 7% 35px;
 
-    border-top:
-        1px solid var(--border);
+    text-align:center;
 
-    padding:
-        42px 20px;
+    border-top:1px solid rgba(215,181,106,.10);
 
-    text-align: center;
-
-    color:
-        #697485;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
+    background:#030303;
 }
 
-footer strong {
-    color: #b9c1cd;
+.footer-logo{
+    color:#d7b56a;
+
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:4px;
 }
 
-.footer-musk {
+.footer-managed{
+    margin-top:15px;
 
-    margin-top: 13px;
+    color:#77736d;
 
-    color:
-        #8993a2;
-
-    font-size: 10px;
-
-    line-height: 1.8;
-
-    letter-spacing: 1.5px;
+    font-size:11px;
 }
 
-.footer-musk strong {
-    color: var(--gold);
+.footer-managed strong{
+    color:#d7b56a;
+}
+
+.footer-musk{
+    margin-top:5px;
+
+    color:#555;
+
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+.footer-copy{
+    margin-top:28px;
+
+    color:#3f3d39;
+
+    font-size:8px;
+    letter-spacing:1px;
 }
 
 
@@ -1092,121 +978,112 @@ footer strong {
    MOBILE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media(max-width:760px){
 
-    .portal-status {
-        display: none;
+    .navbar{
+        height:68px;
+        padding:0 5%;
     }
 
-    .nav-links {
-        gap: 2px;
+    .logo{
+        font-size:16px;
+        letter-spacing:3px;
     }
 
-    .nav-link {
-        padding: 8px 9px;
-        font-size: 8px;
-    }
-}
-
-@media (max-width: 720px) {
-
-    .navbar {
-
-        min-height: 64px;
-
-        padding:
-            0 15px;
+    .logo span{
+        display:none;
     }
 
-    .logo {
-        font-size: 22px;
+    .nav-links{
+        gap:13px;
     }
 
-    .nav-links {
-
-        max-width: 72vw;
-
-        overflow-x: auto;
-
-        scrollbar-width: none;
+    .nav-links a{
+        font-size:8px;
+        letter-spacing:1px;
     }
 
-    .nav-links::-webkit-scrollbar {
-        display: none;
+    .nav-links a::after{
+        bottom:-7px;
     }
 
-    .nav-link {
-        white-space: nowrap;
+    .hero{
+        padding-left:5%;
+        padding-right:5%;
     }
 
-    .hero {
-
-        padding:
-            75px 20px 50px;
+    .hero h1{
+        letter-spacing:4px;
     }
 
-    .hero h1 {
-
-        font-size:
-            clamp(48px, 15vw, 75px);
+    .hero-tagline{
+        font-size:13px;
     }
 
-    .hero-description {
-        font-size: 14px;
+    section{
+        padding:85px 6%;
     }
 
-    .cards {
-
-        grid-template-columns: 1fr;
-
-        padding:
-            10px 20px 65px;
+    .gold-divider{
+        margin:0 6%;
     }
 
-    .card {
-        min-height: auto;
-        padding: 28px;
+    .connect-layout{
+        grid-template-columns:1fr;
     }
 
-    .section-heading {
-        padding:
-            20px;
+    .journey{
+        grid-template-columns:1fr;
     }
 
-    .about-section {
-        padding:
-            15px 20px 70px;
+    .contact-panel{
+        padding:27px;
     }
 
-    .about-panel {
-        padding: 27px;
+    .intro-title{
+        font-size:18vw;
+        letter-spacing:6px;
     }
 
-    .about-top {
-        flex-direction: column;
+    .intro-subtitle{
+        font-size:8px;
+        letter-spacing:2px;
     }
 
-    .achievement-grid {
-        grid-template-columns: 1fr;
+    .intro-quote{
+        font-size:15px;
     }
 
-    .intro-info {
-        font-size: 13px;
-    }
-
-    .intro-quote {
-        font-size: 15px;
-    }
-
-    .intro-name {
-        letter-spacing: -2px;
-    }
-
-    .intro-bottom {
-        bottom: 35px;
+    .final-quote{
+        padding:90px 7%;
     }
 }
 
+@media(max-width:430px){
+
+    .nav-links{
+        gap:8px;
+    }
+
+    .nav-links a{
+        font-size:7px;
+    }
+
+    .hero h1{
+        font-size:18vw;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .hero-actions{
+        width:100%;
+        max-width:320px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
 </style>
 </head>
 
@@ -1214,241 +1091,200 @@ footer strong {
 <body>
 
 
-<!-- =======================================================
-     5 SECOND INTRO
-======================================================= -->
+<!-- =====================================================
+     CINEMATIC 5 SECOND INTRO
+===================================================== -->
 
-<section id="intro">
+<div id="intro">
 
-    <div class="intro-glow"></div>
+    <div class="intro-wrap">
 
-    <div class="intro-content">
+        <div class="intro-top-line"></div>
 
-        <div class="intro-eyebrow">
-            A Personal Digital Office
+        <div class="intro-small">
+            Official Digital Office
         </div>
 
-        <div class="intro-name">
-            Mankit
+        <div class="intro-title">
+            MANKIT
         </div>
 
-        <div class="intro-info">
-
+        <div class="intro-subtitle">
             Prerana Alumni · Batch 3
-
             <br>
-
-            Ministry of Education, India
-
-            <br><br>
-
+            Ministry of Education · India
+            <br>
             Sakura Science Club Member · Japan
-
         </div>
 
         <div class="intro-quote">
-
-            “Some journeys begin with a destination.
-            The remarkable ones begin with a decision
-            to build something that outlives the moment.”
-
+            <span>Dream.</span>
+            Learn.
+            <span>Build.</span>
+            Lead.
         </div>
 
-    </div>
-
-    <div class="intro-bottom">
-
-        <div class="loading-text">
-            ENTERING DIGITAL OFFICE
-        </div>
-
-        <div class="progress">
-            <span></span>
-        </div>
+        <div class="intro-bottom-line"></div>
 
     </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     MAIN WEBSITE
-======================================================= -->
-
-<main id="app">
-
-
-<!-- =======================================================
-     NAVBAR
-======================================================= -->
-
-<header>
-
-    <nav class="navbar">
-
-        <a
-            href="#home"
-            class="logo"
-        >
-            Mankit<span>.</span>
-        </a>
-
-
-        <div class="nav-links">
-
-            <a
-                href="#home"
-                class="nav-link active"
-            >
-                Home
-            </a>
-
-            <a
-                href="#academics"
-                class="nav-link"
-            >
-                Academics
-            </a>
-
-            <a
-                href="#connect"
-                class="nav-link"
-            >
-                Connect
-            </a>
-
-            <a
-                href="#about"
-                class="nav-link"
-            >
-                About
-            </a>
-
-        </div>
-
-
-        <div class="portal-status">
-
-            <span class="status-dot"></span>
-
-            Digital Office
-
-        </div>
-
-    </nav>
-
-</header>
-
-
-
-<!-- =======================================================
-     HOME
-======================================================= -->
-
-<section
-    class="hero"
-    id="home"
->
-
-    <div class="hero-label">
-        Official Personal Portal
-    </div>
-
-
-    <h1>
-
-        Ideas, Academics
-
-        <br>
-
-        & Everything in Between.
-
-    </h1>
-
-
-    <p class="hero-description">
-
-        A focused digital space for academic resources,
-        appointments, communication and future initiatives.
-        Designed to keep every important connection
-        just one click away.
-
-    </p>
-
-
-    <div class="quick-nav">
-
-        <a
-            href="#academics"
-            class="quick-button"
-        >
-            Explore Academics
-            <span>↓</span>
-        </a>
-
-        <a
-            href="#connect"
-            class="quick-button"
-        >
-            Connect
-            <span>→</span>
-        </a>
-
-        <a
-            href="#about"
-            class="quick-button"
-        >
-            Discover About
-            <span>↓</span>
-        </a>
-
-    </div>
-
-
-    <div class="gold-line"></div>
-
-</section>
-
-
-
-<!-- =======================================================
-     ACADEMICS
-======================================================= -->
-
-<div
-    class="section-heading"
-    id="academics"
->
-
-    <div class="section-kicker">
-        01 / Academic Office
-    </div>
-
-    <h2>
-        Academics & Resources
-    </h2>
 
 </div>
 
 
-<section class="cards">
+<!-- =====================================================
+     MAIN WEBSITE
+===================================================== -->
+
+<div id="app">
 
 
-    <!-- ACADEMIC NOTES -->
+<!-- NAVIGATION -->
 
-    <article class="card">
+<nav class="navbar">
 
-        <div class="card-number">
-            01 / ACADEMICS
+    <a href="#home" class="logo">
+        MANKIT
+        <span>OFFICIAL</span>
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home" class="active">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="#academics">
+                Academics
+            </a>
+        </li>
+
+        <li>
+            <a href="#connect">
+                Connect
+            </a>
+        </li>
+
+        <li>
+            <a href="#about">
+                About
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Official Digital Office
         </div>
 
-        <h2>
-            Engineering Academic Notes
+        <h1>
+            MANKIT<br>
+            <span class="gold">OFFICIAL</span>
+        </h1>
+
+        <p class="hero-tagline">
+            A personal digital office bringing together
+            academics, technology, communication,
+            experiences and the journey ahead.
+        </p>
+
+        <div class="hero-quote">
+            “Your journey is not defined by where you start,
+            <span>but by what you build.</span>”
+        </div>
+
+        <div class="hero-actions">
+
+            <a
+                href="#academics"
+                class="btn btn-gold"
+            >
+                Explore Office
+            </a>
+
+            <a
+                href="#about"
+                class="btn btn-dark"
+            >
+                Explore Journey
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="scroll-note">
+        Scroll to explore
+    </div>
+
+</section>
+
+
+<div class="gold-divider">
+    <span></span>
+    <span></span>
+</div>
+
+
+<!-- =====================================================
+     ACADEMICS
+===================================================== -->
+
+<section id="academics">
+
+    <div class="section-head">
+
+        <div class="section-number">
+            01 / ACADEMIC OFFICE
+        </div>
+
+        <h2 class="section-title">
+            Engineering <span>Academics</span>
         </h2>
 
-        <p>
+        <p class="section-description">
+            A dedicated academic space for engineering
+            notes, resources, communication and future
+            learning initiatives.
+        </p>
 
-            Access ICoT, RGPV — IES University Bhopal
-            academic notes and resources through the
-            organized aca
+    </div>
+
+
+    <div class="cards">
+
+
+        <!-- NOTION -->
+
+        <article class="card">
+
+            <div class="card-icon">
+                ◈
+            </div>
+
+            <div class="card-label">
+                Academic Resources
+            </div>
+
+            <h3>
+                Engineering Academic Notes
+            </h3>
+
+            <p>
+                Access the organized RGPV / ICoT
+                academic workspace containing notes
+                and study resources.
+      
