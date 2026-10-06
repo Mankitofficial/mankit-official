@@ -3,275 +3,924 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#05070a">
 
-<title>Mankit Official Platform</title>
+<title>Mankit | Official Digital Office</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* RESET */
+/* =========================================================
+   ROOT
+========================================================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+    --bg: #05070a;
+    --bg2: #0b0f15;
+
+    --text: #f5f6f8;
+    --muted: #9da6b5;
+
+    --gold: #d7b36a;
+    --gold-light: #f1d99d;
+
+    --green: #70d49a;
+
+    --border: rgba(255,255,255,0.10);
 }
 
-html{
-    scroll-behavior:smooth;
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#f4f4f4;
-    overflow:hidden;
-    color:#1d1d1d;
+html {
+    scroll-behavior: smooth;
 }
 
-/* SPLASH SCREEN */
+body {
+    min-height: 100vh;
 
-#splash-screen{
-    position:fixed;
-    width:100%;
-    height:100vh;
-    background:linear-gradient(to bottom,#02153b,#003ed1);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    transition:1s ease;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(216,179,106,0.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #080b10 0%,
+            #05070a 100%
+        );
+
+    color: var(--text);
+
+    font-family: "Inter", sans-serif;
+
+    overflow-x: hidden;
 }
 
-.logo-text{
-    font-size:90px;
-    color:#d4af37;
-    font-family:'Playfair Display',serif;
-    letter-spacing:12px;
-    opacity:0;
-    animation:logoAnimation 3s ease forwards;
+
+/* Subtle premium grain */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,0.08) 0.5px,
+            transparent 0.5px
+        );
+
+    background-size: 5px 5px;
+
+    opacity: 0.035;
+
+    z-index: 9999;
 }
 
-/* MAIN */
 
-#main-content{
-    display:none;
-    animation:fadeContent 1.2s ease forwards;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-/* HERO */
 
-.hero{
-    height:320px;
-    background:linear-gradient(135deg,#005eff,#00bfff);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-    padding:20px;
+/* =========================================================
+   INTRO SCREEN
+========================================================= */
+
+#intro {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #111821 0%,
+            #07090d 50%,
+            #030405 100%
+        );
 }
 
-.hero h1{
-    font-size:72px;
-    font-family:'Playfair Display',serif;
+
+/* Golden glow */
+
+.intro-glow {
+
+    position: absolute;
+
+    width: 650px;
+
+    height: 650px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(215,179,106,0.12),
+            transparent 65%
+        );
+
+    filter: blur(10px);
+
+    animation:
+        glowPulse 4s ease-in-out infinite;
 }
 
-.hero p{
-    font-size:22px;
-    margin-top:10px;
-    font-weight:300;
-}
 
-/* SECTION */
+@keyframes glowPulse {
 
-.section-container{
-    padding:40px 20px;
-}
-
-.card{
-    max-width:950px;
-    margin:auto;
-    background:white;
-    border-radius:35px;
-    padding:45px;
-    box-shadow:0 10px 35px rgba(0,0,0,0.08);
-    margin-bottom:35px;
-}
-
-.card h2{
-    font-size:52px;
-    color:#d4af37;
-    margin-bottom:24px;
-    font-family:'Playfair Display',serif;
-}
-
-.card p{
-    font-size:21px;
-    line-height:2;
-}
-
-/* LINK BOX */
-
-.link-box{
-    display:block;
-    text-decoration:none;
-    background:linear-gradient(135deg,#005eff,#00bfff);
-    color:white;
-    padding:28px;
-    border-radius:28px;
-    margin-top:24px;
-    transition:0.4s ease;
-    box-shadow:0 10px 25px rgba(0,0,0,0.12);
-}
-
-.link-box:hover{
-    transform:translateY(-5px);
-}
-
-.link-box h3{
-    font-size:30px;
-    margin-bottom:10px;
-    font-family:'Playfair Display',serif;
-}
-
-.link-box p{
-    font-size:17px;
-    line-height:1.8;
-    color:white;
-}
-
-/* DARK BOX */
-
-.dark-box{
-    background:linear-gradient(135deg,#02153b,#003ed1);
-}
-
-/* TOGGLE */
-
-.toggle-box{
-    background:#f7f7f7;
-    border-radius:24px;
-    padding:24px;
-    margin-top:20px;
-    border:1px solid #ececec;
-}
-
-.toggle-box summary{
-    list-style:none;
-    cursor:pointer;
-    font-size:26px;
-    font-family:'Playfair Display',serif;
-    font-weight:600;
-}
-
-.toggle-box summary::-webkit-details-marker{
-    display:none;
-}
-
-.toggle-content{
-    margin-top:20px;
-}
-
-.toggle-content p{
-    font-size:19px;
-    line-height:2;
-}
-
-/* ATBF HIGHLIGHT */
-
-.highlight{
-    background:linear-gradient(135deg,#fff4d1,#ffe082);
-    padding:18px;
-    border-radius:18px;
-    margin-top:18px;
-    border-left:6px solid #d4af37;
-}
-
-.highlight p{
-    color:#3d2c00;
-    font-weight:500;
-}
-
-/* ANIMATION */
-
-@keyframes logoAnimation{
-
-    0%{
-        opacity:0;
-        transform:translateY(40px);
-        letter-spacing:28px;
+    0%,100% {
+        transform: scale(0.95);
+        opacity: 0.6;
     }
 
-    100%{
-        opacity:1;
-        transform:translateY(0);
-        letter-spacing:12px;
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
     }
-
 }
 
-@keyframes fadeContent{
 
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
+/* Intro content */
 
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.intro-content {
 
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+    padding: 30px;
 }
 
-/* MOBILE */
 
-@media(max-width:768px){
+/* Eyebrow */
 
-    .logo-text{
-        font-size:58px;
+.intro-eyebrow {
+
+    color: var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 25px;
+
+    opacity: 0;
+
+    animation:
+        reveal 1s 0.2s forwards;
+}
+
+
+/* Mankit */
+
+.intro-name {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(60px, 11vw, 125px);
+
+    line-height: 0.9;
+
+    letter-spacing: -4px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #ffffff,
+            #d7b36a,
+            #ffffff
+        );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    animation:
+        revealName 1.4s 0.4s forwards,
+        shine 4s 1.5s linear infinite;
+}
+
+
+@keyframes shine {
+
+    to {
+        background-position: 200% center;
+    }
+}
+
+
+/* Intro information */
+
+.intro-info {
+
+    margin-top: 25px;
+
+    color: #c9d0da;
+
+    font-size:
+        clamp(14px, 2vw, 19px);
+
+    line-height: 1.8;
+
+    opacity: 0;
+
+    animation:
+        reveal 1s 1.2s forwards;
+}
+
+
+/* Goosebumps quote */
+
+.intro-quote {
+
+    max-width: 680px;
+
+    margin:
+        25px auto 0;
+
+    color: white;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(15px, 2vw, 21px);
+
+    line-height: 1.7;
+
+    opacity: 0;
+
+    animation:
+        reveal 1s 2s forwards;
+}
+
+
+/* Animations */
+
+@keyframes reveal {
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes revealName {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* Bottom loading */
+
+.intro-bottom {
+
+    position: absolute;
+
+    bottom: 48px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.loading-text {
+
+    color: #778293;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
+}
+
+
+.progress {
+
+    width: 180px;
+
+    height: 2px;
+
+    background:
+        rgba(255,255,255,0.12);
+
+    overflow: hidden;
+}
+
+
+.progress span {
+
+    display: block;
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        var(--gold);
+
+    animation:
+        loading 5s linear forwards;
+}
+
+
+@keyframes loading {
+
+    to {
+        width: 100%;
+    }
+}
+
+
+/* Intro disappears */
+
+#intro.hide {
+
+    animation:
+        introOut 0.8s ease forwards;
+}
+
+
+@keyframes introOut {
+
+    to {
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+    }
+}
+
+
+/* =========================================================
+   MAIN APP
+========================================================= */
+
+#app {
+
+    opacity: 0;
+
+    transition:
+        opacity 1.2s ease;
+}
+
+
+#app.visible {
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    background:
+        rgba(5,7,10,0.72);
+
+    backdrop-filter:
+        blur(20px);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.navbar {
+
+    max-width: 1200px;
+
+    height: 76px;
+
+    margin: auto;
+
+    padding:
+        0 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 25px;
+}
+
+
+.logo span {
+
+    color:
+        var(--gold);
+}
+
+
+.portal-status {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #8e98a8;
+}
+
+
+.status-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    display: inline-block;
+
+    margin-right: 8px;
+
+    border-radius: 50%;
+
+    background:
+        var(--green);
+
+    box-shadow:
+        0 0 10px var(--green);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding:
+        115px 25px 70px;
+}
+
+
+.hero-label {
+
+    color:
+        var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+.hero h1 {
+
+    max-width: 900px;
+
+    margin-top: 18px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(50px, 8vw, 92px);
+
+    line-height: 0.98;
+
+    letter-spacing: -3px;
+}
+
+
+.hero-description {
+
+    max-width: 680px;
+
+    margin-top: 27px;
+
+    color:
+        var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.9;
+}
+
+
+.gold-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
+
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.cards {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding:
+        15px 25px 100px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+.card {
+
+    position: relative;
+
+    min-height: 260px;
+
+    padding: 34px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.015)
+        );
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+
+    height: 170px;
+
+    right: -80px;
+
+    bottom: -80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(215,179,106,0.12),
+            transparent 70%
+        );
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(215,179,106,0.42);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.32);
+}
+
+
+.card-number {
+
+    color:
+        var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+.card h2 {
+
+    margin-top: 13px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 600;
+}
+
+
+.card p {
+
+    margin-top: 12px;
+
+    color:
+        var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* Buttons */
+
+.button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 24px;
+
+    padding:
+        11px 17px;
+
+    border:
+        1px solid
+        rgba(215,179,106,0.45);
+
+    border-radius: 9px;
+
+    background:
+        rgba(215,179,106,0.055);
+
+    color:
+        #f1e5c9;
+
+    font-size: 12px;
+
+    transition:
+        0.25s ease;
+
+    cursor: pointer;
+}
+
+
+.button:hover {
+
+    background:
+        rgba(215,179,106,0.13);
+
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-list {
+
+    margin-top: 20px;
+
+    display: grid;
+
+    gap: 10px;
+}
+
+
+.contact-link {
+
+    color:
+        #d4dae2;
+
+    font-size: 13px;
+
+    transition:
+        0.2s ease;
+}
+
+
+.contact-link:hover {
+
+    color:
+        var(--gold);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    border-top:
+        1px solid var(--border);
+
+    padding:
+        35px 20px;
+
+    text-align: center;
+
+    color:
+        #697485;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+
+footer strong {
+
+    color:
+        #b9c1cd;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:720px) {
+
+    .navbar {
+
+        height: 65px;
+
+        padding:
+            0 18px;
     }
 
-    .hero{
-        height:280px;
+
+    .portal-status {
+
+        font-size: 8px;
     }
 
-    .hero h1{
-        font-size:54px;
+
+    .hero {
+
+        padding:
+            75px 20px 50px;
     }
 
-    .hero p{
-        font-size:17px;
+
+    .hero h1 {
+
+        font-size:
+            clamp(48px, 15vw, 75px);
     }
 
-    .card{
-        padding:34px 26px;
+
+    .hero-description {
+
+        font-size: 14px;
     }
 
-    .card h2{
-        font-size:40px;
+
+    .cards {
+
+        grid-template-columns: 1fr;
+
+        padding:
+            10px 20px 70px;
     }
 
-    .card p{
-        font-size:18px;
+
+    .card {
+
+        min-height: auto;
+
+        padding: 28px;
     }
 
-    .link-box h3{
-        font-size:24px;
+
+    .intro-info {
+
+        font-size: 13px;
     }
 
-    .link-box p{
-        font-size:15px;
+
+    .intro-quote {
+
+        font-size: 15px;
     }
 
-    .toggle-box summary{
-        font-size:21px;
+
+    .intro-name {
+
+        letter-spacing: -2px;
     }
 
-    .toggle-content p{
-        font-size:17px;
+
+    .intro-bottom {
+
+        bottom: 35px;
     }
 
 }
@@ -279,274 +928,494 @@ body{
 </style>
 </head>
 
+
 <body>
 
-<!-- SPLASH SCREEN -->
 
-<div id="splash-screen">
+<!-- =======================================================
+     5 SECOND CINEMATIC INTRO
+======================================================= -->
 
-    <h1 class="logo-text">MANKIT</h1>
+<section id="intro">
 
-</div>
+    <div class="intro-glow"></div>
 
-<!-- MAIN CONTENT -->
 
-<div id="main-content">
+    <div class="intro-content">
 
-    <!-- HERO -->
+        <div class="intro-eyebrow">
+            A Personal Digital Office
+        </div>
 
-    <section class="hero">
 
-        <h1>Mankit</h1>
+        <div class="intro-name">
+            Mankit
+        </div>
 
-        <p>
-            Official Personal & Professional Portal
-        </p>
 
-    </section>
+        <div class="intro-info">
 
-    <!-- CONTENT -->
+            Prerana Alumni · Batch 3
 
-    <section class="section-container">
+            <br>
 
-        <!-- WELCOME -->
+            Ministry of Education, India
 
-        <div class="card">
+            <br><br>
 
-            <h2>Welcome</h2>
-
-            <p>
-                Welcome to my official digital space.
-                This platform reflects my journey,
-                values, discipline, experiences,
-                and continuous effort to grow positively.
-            </p>
+            Sakura Science Club Member · Japan
 
         </div>
 
-        <!-- PRERANA -->
 
-        <div class="card">
+        <div class="intro-quote">
 
-            <h2>Journey Beyond PRERANA ✨</h2>
-
-            <a href="https://fixed-dragonfly-5de.notion.site/Preana-Program-36689058459d80239636d6d9e16c35c7"
-               target="_blank"
-               class="link-box">
-
-                <h3>PRERANA Experience & Learnings</h3>
-
-                <p>
-                    Explore memories, experiences,
-                    growth, and lessons from PRERANA.
-                </p>
-
-            </a>
+            “Some journeys begin with a destination.
+            The remarkable ones begin with a decision
+            to build something that outlives the moment.”
 
         </div>
 
-        <!-- JAPAN -->
+    </div>
 
-        <div class="card">
 
-            <h2>Sakura Science Club Japan ✨</h2>
+    <div class="intro-bottom">
 
-            <a href="https://fixed-dragonfly-5de.notion.site/SSC-Japan-36689058459d80f0a396f2cf4e628e80"
-               target="_blank"
-               class="link-box">
+        <div class="loading-text">
+            ENTERING DIGITAL OFFICE
+        </div>
 
-                <h3>Japan Experience & Cultural Journey</h3>
 
-                <p>
-                    Discover innovation, exposure,
-                    culture, and learning experiences from Japan.
-                </p>
+        <div class="progress">
 
-            </a>
+            <span></span>
 
         </div>
 
-        <!-- STUDY MATERIAL -->
+    </div>
 
-        <div class="card">
+</section>
 
-            <h2>Get Premium Study Material 📚</h2>
 
-            <a href="mailto:mankitmankit7@gmail.com?subject=Premium Study Material Request&body=Name:%0D%0AClass:%0D%0ASchool:%0D%0ADost:%0D%0AState:%0D%0AContent you want:%0D%0ARemarks:%0D%0AWhatsApp Number:"
-               class="link-box dark-box">
 
-                <h3>Request Study Material</h3>
+<!-- =======================================================
+     MAIN WEBSITE
+======================================================= -->
 
-                <p>
-                    Click here to directly send your request
-                    with a pre-written email format.
-                </p>
+<main id="app">
 
-            </a>
+
+<!-- NAVBAR -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Mankit<span>.</span>
+        </div>
+
+
+        <div class="portal-status">
+
+            <span class="status-dot"></span>
+
+            Digital Office
 
         </div>
 
-        <!-- MENTORSHIP -->
+    </nav>
 
-        <div class="card">
+</header>
 
-            <h2>Join Personal Mentorship ✨</h2>
 
-            <a href="upi://pay?pa=7056308558@ptyes&pn=Mankit&am=99&cu=INR"
-               class="link-box">
 
-                <h3>Personal Guidance & Doubt Support</h3>
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-                <p>
-                    Get support regarding doubts,
-                    discipline, study direction,
-                    consistency, mindset, and motivation.
-                    Contribution Amount : ₹99
-                </p>
+<section class="hero">
 
-            </a>
+    <div class="hero-label">
+        Official Personal Portal
+    </div>
 
-        </div>
 
-        <!-- ABOUT -->
+    <h1>
 
-        <div class="card">
+        Ideas, Academics
 
-            <h2>About Me</h2>
+        <br>
 
-            <details class="toggle-box" open>
+        & Everything in Between.
 
-                <summary>Who Am I ?</summary>
+    </h1>
 
-                <div class="toggle-content">
 
-                    <p>
-                        My name is Mankit. I completed my schooling
-                        from PM SHRI GSSS Karnal and I am proudly
-                        associated with PRERANA Batch 3.
-                        I am also connected with Sakura Science Club Japan
-                        and continue learning through educational
-                        and international experiences.
+    <p class="hero-description">
 
-                        I believe in discipline, respect,
-                        self-growth, empathy, and positivity.
-                        For me, education is not just about marks,
-                        but also about becoming a responsible
-                        and good human being.
+        A focused digital space for academic resources,
+        appointments, communication and future initiatives.
+        Designed to keep every important connection
+        just one click away.
 
-                        I enjoy creating ideas, helping students,
-                        learning globally, and building meaningful projects.
-                        My journey is still growing,
-                        and every experience continues
-                        to shape me into a stronger personality.
-                    </p>
+    </p>
 
-                </div>
 
-            </details>
+    <div class="gold-line"></div>
 
-            <details class="toggle-box">
+</section>
 
-                <summary>Special Thanks 💛</summary>
 
-                <div class="toggle-content">
 
-                    <p>
-                        Heartfelt gratitude to my Parents
-                        for their support, sacrifices,
-                        trust, and encouragement.
+<!-- =======================================================
+     CALLOUT CARDS
+======================================================= -->
 
-                        Special thanks to PRERANA Mentors,
-                        PRERANA Friends,
-                        and PM SHRI GSSS Staff
-                        for guidance, motivation,
-                        memories, and valuable life lessons.
-                    </p>
+<section class="cards">
 
-                    <div class="highlight">
 
-                        <p>
-                            ✨ ATBF (All Time Best Friend)
+<!-- =====================================================
+     01 — ENGINEERING ACADEMICS
+===================================================== -->
 
-                            Due to personal and security reasons,
-                            the name is not disclosed publicly.
-                            But behind almost every important achievement,
-                            hardworking phase, emotional support,
-                            motivation, and successful moment,
-                            there has always been the silent presence
-                            of my All Time Best Friend.
-                            Every dream, effort, and milestone somewhere
-                            carries a contribution from ATBF.
-                        </p>
+<article class="card">
 
-                    </div>
+    <div class="card-number">
+        01 / ACADEMICS
+    </div>
 
-                </div>
 
-            </details>
+    <h2>
+        Engineering Academic Notes
+    </h2>
 
-        </div>
 
-        <!-- FEEDBACK -->
+    <p>
 
-        <div class="card">
+        Access ICoT, RGPV — IES University Bhopal
+        academic notes and resources through the
+        organized academic workspace.
 
-            <h2>Suggestions & Feedback 💌</h2>
+    </p>
 
-            <a href="mailto:mankitmankit7@gmail.com?subject=Suggestions and Feedback for Mankit Platform"
-               class="link-box dark-box">
 
-                <h3>Send Feedback on Email</h3>
+    <!-- EXACT NOTION LINK -->
 
-                <p>
-                    Your ideas, suggestions,
-                    feedback, and support are always welcome.
-                    Click here to directly open email.
-                </p>
+    <a
+        class="button"
 
-            </a>
+        href="https://fixed-dragonfly-5de.notion.site/RGPV-ICoT-Academics-3ed89058459d808081a0ceed9c57453f"
 
-        </div>
+        target="_blank"
+
+        rel="noopener noreferrer"
+    >
+
+        Access Academic Notes
+
+        <span>↗</span>
+
+    </a>
+
+</article>
+
+
+
+<!-- =====================================================
+     02 — BOOK APPOINTMENT
+===================================================== -->
+
+<article class="card">
+
+    <div class="card-number">
+        02 / APPOINTMENT
+    </div>
+
+
+    <h2>
+        Book an Appointment
+    </h2>
+
+
+    <p>
+
+        Want to connect directly?
+        Start an appointment request with
+        your name, phone number and topic
+        already prepared in the email.
+
+    </p>
+
+
+    <!--
+        MAILTO
+        Opens the user's default email application.
+    -->
+
+    <a
+
+        class="button"
+
+        href="mailto:mankitmankit7@gmail.com?subject=Appointment%20Request%20-%20Mankit&body=Name:%0A%0APhone%20Number:%0A%0ATopic:%0A%0APreferred%20Date%20%26%20Time:%0A"
+
+    >
+
+        Book Appointment
+
+        <span>↗</span>
+
+    </a>
+
+</article>
+
+
+
+<!-- =====================================================
+     03 — FEEDBACK & QUERIES
+===================================================== -->
+
+<article class="card">
+
+    <div class="card-number">
+        03 / CONNECT
+    </div>
+
+
+    <h2>
+        Feedback & Queries
+    </h2>
+
+
+    <p>
+
+        For feedback, questions, collaboration
+        or general communication, connect
+        through any of the available channels.
+
+    </p>
+
+
+    <div class="contact-list">
+
+
+        <!-- EMAIL 1 -->
+
+        <a
+
+            class="contact-link"
+
+            href="mailto:mankitmankit7@gmail.com"
+
+        >
+
+            ✉
+            mankitmankit7@gmail.com
+
+        </a>
+
+
+        <!-- EMAIL 2 -->
+
+        <a
+
+            class="contact-link"
+
+            href="mailto:mankitmankit83@gmail.com"
+
+        >
+
+            ✉
+            mankitmankit83@gmail.com
+
+        </a>
+
 
         <!-- INSTAGRAM -->
 
-        <div class="card">
+        <a
 
-            <h2>Connect With Me 📸</h2>
+            class="contact-link"
 
-            <a href="https://instagram.com/Mankitvibes.only_"
-               target="_blank"
-               class="link-box">
+            href="https://instagram.com/Mankitvibes.only_"
 
-                <h3>Follow on Instagram</h3>
+            target="_blank"
 
-                <p>
-                    Join my journey, updates,
-                    experiences, and projects on Instagram.
-                </p>
+            rel="noopener noreferrer"
 
-            </a>
+        >
 
-        </div>
+            ◎
+            Instagram · @Mankitvibes.only_
 
-    </section>
+        </a>
 
-</div>
+
+    </div>
+
+</article>
+
+
+
+<!-- =====================================================
+     04 — OFFICIAL SITE
+===================================================== -->
+
+<article class="card">
+
+    <div class="card-number">
+        04 / OFFICIAL SITE
+    </div>
+
+
+    <h2>
+        Mankit Official Site
+    </h2>
+
+
+    <p>
+
+        The larger digital home of Mankit
+        is currently being built.
+        A new chapter is coming soon.
+
+    </p>
+
+
+    <span
+
+        class="button"
+
+        style="cursor:default"
+
+    >
+
+        Coming Soon
+
+        <span>•</span>
+
+    </span>
+
+</article>
+
+
+
+<!-- =====================================================
+     05 — ABOUT
+===================================================== -->
+
+<article class="card">
+
+    <div class="card-number">
+        05 / ABOUT
+    </div>
+
+
+    <h2>
+        Know About Mankit
+    </h2>
+
+
+    <p>
+
+        Discover the journey, experiences,
+        academic interests, initiatives and
+        vision behind Mankit.
+
+    </p>
+
+
+    <span
+
+        class="button"
+
+        style="cursor:default"
+
+    >
+
+        Live on 18 October
+
+        <span>◷</span>
+
+    </span>
+
+</article>
+
+
+</section>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+    <strong>MANKIT</strong>
+
+    &nbsp;·&nbsp;
+
+    Personal Digital Office
+
+    &nbsp;|&nbsp;
+
+    Built with purpose, not noise.
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
 
-setTimeout(() => {
+/*
+=========================================================
+5 SECOND INTRO
+=========================================================
+*/
 
-    document.getElementById("splash-screen").style.opacity = "0";
-    document.getElementById("splash-screen").style.visibility = "hidden";
+window.addEventListener("load", function () {
 
-    document.getElementById("main-content").style.display = "block";
+    setTimeout(function () {
 
-    document.body.style.overflow = "auto";
+        const intro =
+            document.getElementById("intro");
 
-}, 3000);
+        const app =
+            document.getElementById("app");
+
+
+        intro.classList.add("hide");
+
+        app.classList.add("visible");
+
+
+        document.body.style.overflow =
+            "auto";
+
+    }, 5000);
+
+});
+
+
+/*
+=========================================================
+LOCK SCROLL DURING INTRO
+=========================================================
+*/
+
+document.body.style.overflow =
+    "hidden";
 
 </script>
+
 
 </body>
 </html>
