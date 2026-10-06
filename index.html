@@ -3,1398 +3,861 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050505">
+<meta name="theme-color" content="#05070a">
 
-<title>Mankit | Office Life</title>
+<title>Mankit | Official Digital Office</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* ================================
-   RESET
-================================ */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+    --bg: #05070a;
+    --bg2: #0b0f15;
+    --text: #f5f6f8;
+    --muted: #9da6b5;
+    --gold: #d7b36a;
+    --gold-light: #f1d99d;
+    --green: #70d49a;
+    --border: rgba(255,255,255,0.10);
 }
 
-html{
-    scroll-behavior:smooth;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background:#050505;
-    color:#f5f5f5;
-    font-family:Inter,Arial,sans-serif;
-    overflow-x:hidden;
+html {
+    scroll-behavior: smooth;
 }
 
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    z-index:-1;
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(216,179,106,0.13),
+            transparent 35%
+        ),
+        linear-gradient(180deg, #080b10 0%, #05070a 100%);
+    color: var(--text);
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,0.08) 0.5px,
+            transparent 0.5px
+        );
+    background-size: 5px 5px;
+    opacity: 0.035;
+    z-index: 9999;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ================= INTRO ================= */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
 
     background:
-    radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transparent 30%),
-    radial-gradient(circle at 80% 70%,rgba(255,255,255,.025),transparent 35%);
+        radial-gradient(
+            circle at center,
+            #111821 0%,
+            #07090d 50%,
+            #030405 100%
+        );
 }
 
-/* ================================
-   INTRO
-================================ */
-
-#intro{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.intro-glow {
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
 
     background:
-    radial-gradient(circle at center,#171717 0%,#080808 45%,#020202 100%);
+        radial-gradient(
+            circle,
+            rgba(215,179,106,0.12),
+            transparent 65%
+        );
 
-    opacity:1;
-    visibility:visible;
-
-    transition:opacity .8s ease;
+    filter: blur(10px);
+    animation: glowPulse 4s ease-in-out infinite;
 }
 
-#intro.fade-out{
-    opacity:0;
-}
-
-.intro-container{
-    width:min(900px,90%);
-    text-align:center;
-
-    animation:introIn 1.2s ease forwards;
-}
-
-.intro-small{
-    color:#666;
-    font-size:10px;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    margin-bottom:25px;
-}
-
-.intro-name{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(70px,14vw,150px);
-    line-height:.9;
-    letter-spacing:-6px;
-    font-weight:600;
-}
-
-.intro-spelling{
-    color:#666;
-    font-size:11px;
-    letter-spacing:10px;
-    margin-top:22px;
-}
-
-.intro-line{
-    width:70px;
-    height:1px;
-    background:#555;
-    margin:35px auto;
-}
-
-.intro-info{
-    color:#aaa;
-    font-size:14px;
-    line-height:2;
-}
-
-.intro-info strong{
-    color:#fff;
-}
-
-.intro-quote{
-    max-width:700px;
-    margin:32px auto 0;
-
-    font-family:"Playfair Display",serif;
-    font-size:clamp(18px,3vw,27px);
-    line-height:1.5;
-}
-
-.intro-quote span{
-    display:block;
-
-    margin-top:12px;
-
-    color:#555;
-
-    font-family:Inter,sans-serif;
-    font-size:9px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-}
-
-.intro-loader{
-    width:190px;
-    height:2px;
-    background:#222;
-    margin:40px auto 0;
-    overflow:hidden;
-}
-
-.intro-loader:after{
-    content:"";
-    display:block;
-
-    width:0;
-    height:100%;
-
-    background:#fff;
-
-    animation:loadBar 5s linear forwards;
-}
-
-@keyframes loadBar{
-    from{width:0;}
-    to{width:100%;}
-}
-
-@keyframes introIn{
-    from{
-        opacity:0;
-        transform:translateY(25px);
+@keyframes glowPulse {
+    0%,100% {
+        transform: scale(0.95);
+        opacity: 0.6;
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
     }
 }
 
-/* ================================
-   MAIN SITE
-================================ */
-
-#mainSite{
-    display:none;
-    opacity:0;
-    transform:translateY(20px);
+.intro-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    padding: 30px;
 }
 
-#mainSite.visible{
-    display:block;
+.intro-eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+
+    opacity: 0;
+    animation: reveal 1s 0.2s forwards;
+}
+
+.intro-name {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(60px, 11vw, 125px);
+    line-height: 0.9;
+    letter-spacing: -4px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #ffffff,
+            #d7b36a,
+            #ffffff
+        );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    opacity: 0;
+    transform: translateY(25px);
 
     animation:
-    pageIn .9s ease forwards;
+        revealName 1.4s 0.4s forwards,
+        shine 4s 1.5s linear infinite;
 }
 
-@keyframes pageIn{
-    to{
-        opacity:1;
-        transform:translateY(0);
+@keyframes shine {
+    to {
+        background-position: 200% center;
     }
 }
 
-/* ================================
-   HEADER
-================================ */
+.intro-info {
+    margin-top: 25px;
+    color: #c9d0da;
+    font-size: clamp(14px, 2vw, 19px);
+    line-height: 1.8;
 
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-
-    z-index:5000;
-
-    background:rgba(5,5,5,.82);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-
-    border-bottom:1px solid rgba(255,255,255,.07);
+    opacity: 0;
+    animation: reveal 1s 1.2s forwards;
 }
 
-.navbar{
-    width:min(1250px,92%);
-    height:76px;
-    margin:auto;
+.intro-quote {
+    max-width: 680px;
+    margin: 25px auto 0;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(15px, 2vw, 21px);
+    line-height: 1.7;
+
+    opacity: 0;
+    animation: reveal 1s 2s forwards;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    color:#fff;
-    text-decoration:none;
+@keyframes reveal {
+    to {
+        opacity: 1;
+    }
 }
 
-.logo-mark{
-    width:38px;
-    height:38px;
-
-    border:1px solid #444;
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    font-family:"Playfair Display",serif;
-    font-size:17px;
+@keyframes revealName {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.logo-text{
-    font-size:14px;
-    font-weight:700;
-    letter-spacing:1px;
+.intro-bottom {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.logo-sub{
-    display:block;
-    margin-top:2px;
-
-    color:#555;
-    font-size:7px;
-    letter-spacing:2px;
+.loading-text {
+    color: #778293;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
 }
 
-.nav-links{
-    display:flex;
-    gap:30px;
+.progress {
+    width: 180px;
+    height: 2px;
+    background: rgba(255,255,255,0.12);
+    overflow: hidden;
 }
 
-.nav-links a{
-    color:#888;
-    text-decoration:none;
-    font-size:12px;
-
-    transition:.3s;
+.progress span {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: var(--gold);
+    animation: loading 5s linear forwards;
 }
 
-.nav-links a:hover{
-    color:#fff;
+@keyframes loading {
+    to {
+        width: 100%;
+    }
 }
 
-.nav-actions{
-    display:flex;
-    gap:7px;
+#intro.hide {
+    animation: introOut 0.8s ease forwards;
 }
 
-.nav-icon{
-    width:38px;
-    height:38px;
-
-    border:1px solid rgba(255,255,255,.09);
-    border-radius:11px;
-
-    display:grid;
-    place-items:center;
-
-    color:#aaa;
-    text-decoration:none;
-
-    transition:.3s;
+@keyframes introOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
 }
 
-.nav-icon:hover{
-    color:#fff;
-    background:#151515;
-    transform:translateY(-2px);
+/* ================= MAIN ================= */
+
+#app {
+    opacity: 0;
+    transition: opacity 1.2s ease;
 }
 
-/* ================================
-   HERO
-================================ */
-
-.hero{
-    min-height:100vh;
-
-    padding:
-    150px 4% 100px;
-
-    display:flex;
-    align-items:center;
+#app.visible {
+    opacity: 1;
 }
 
-.hero-container{
-    width:min(1250px,100%);
-    margin:auto;
+/* ================= NAVBAR ================= */
 
-    display:grid;
-    grid-template-columns:1.3fr .7fr;
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
-    gap:70px;
-    align-items:center;
+    background: rgba(5,7,10,0.72);
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid var(--border);
 }
 
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
+.navbar {
+    max-width: 1200px;
+    height: 76px;
+    margin: auto;
+    padding: 0 25px;
 
-    color:#777;
-
-    font-size:9px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-
-    margin-bottom:25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.eyebrow i{
-    color:#fff;
-    font-size:7px;
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
 }
 
-.hero h1{
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(60px,8vw,105px);
-
-    line-height:.92;
-
-    font-weight:500;
-
-    letter-spacing:-5px;
+.logo span {
+    color: var(--gold);
 }
 
-.hero h1 span{
-    color:#666;
+.portal-status {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8e98a8;
 }
 
-.hero-description{
-    max-width:650px;
+.status-dot {
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    margin-right: 8px;
 
-    margin-top:30px;
-
-    color:#888;
-
-    font-size:14px;
-    line-height:1.9;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
 }
 
-.hero-quote{
-    max-width:600px;
+/* ================= HERO ================= */
 
-    margin-top:38px;
-
-    padding-left:20px;
-
-    border-left:1px solid #555;
-
-    color:#ddd;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:21px;
-    line-height:1.5;
+.hero {
+    max-width: 1200px;
+    margin: auto;
+    padding: 115px 25px 70px;
 }
 
-.hero-quote small{
-    display:block;
-
-    margin-top:10px;
-
-    color:#555;
-
-    font-family:Inter,sans-serif;
-
-    font-size:8px;
-    letter-spacing:3px;
-    text-transform:uppercase;
+.hero-label {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
 
-/* ================================
-   OFFICE CARD
-================================ */
+.hero h1 {
+    max-width: 900px;
+    margin-top: 18px;
 
-.office-card{
-    padding:35px;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(50px, 8vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+}
 
-    border:1px solid rgba(255,255,255,.1);
+.hero-description {
+    max-width: 680px;
+    margin-top: 27px;
 
-    border-radius:28px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.gold-line {
+    width: 100%;
+    height: 1px;
+    margin-top: 50px;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.06),
-        rgba(255,255,255,.012)
-    );
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
 
-    box-shadow:0 30px 100px rgba(0,0,0,.45);
+    opacity: 0.45;
 }
 
-.card-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+/* ================= CARDS ================= */
 
-    margin-bottom:45px;
+.cards {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 25px 100px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
-.status{
-    display:flex;
-    align-items:center;
-    gap:8px;
-
-    color:#777;
-
-    font-size:8px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-
-    background:#fff;
-    border-radius:50%;
-
-    box-shadow:0 0 15px #fff;
-}
-
-.card-number{
-    color:#444;
-    font-size:10px;
-}
-
-.office-card h3{
-    font-family:"Playfair Display",serif;
-
-    font-size:32px;
-    font-weight:500;
-}
-
-.office-card p{
-    color:#666;
-
-    font-size:11px;
-    line-height:1.8;
-
-    margin-top:9px;
-}
-
-.card-divider{
-    height:1px;
-
-    background:rgba(255,255,255,.08);
-
-    margin:28px 0;
-}
-
-.card-row{
-    display:flex;
-    justify-content:space-between;
-
-    padding:10px 0;
-}
-
-.card-row span:first-child{
-    color:#555;
-
-    font-size:8px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.card-row span:last-child{
-    color:#ccc;
-
-    font-size:10px;
-}
-
-/* ================================
-   GENERAL SECTIONS
-================================ */
-
-section{
-    width:min(1250px,92%);
-    margin:auto;
-
-    padding:110px 0;
-}
-
-.section-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-
-    margin-bottom:45px;
-}
-
-.section-number{
-    color:#444;
-
-    font-size:9px;
-    letter-spacing:3px;
-}
-
-.section-title{
-    margin-top:8px;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(38px,5vw,65px);
-
-    font-weight:500;
-    letter-spacing:-2px;
-}
-
-.section-description{
-    max-width:420px;
-
-    color:#666;
-
-    font-size:12px;
-    line-height:1.8;
-}
-
-/* ================================
-   CALLOUTS
-================================ */
-
-.callout-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-}
-
-.callout{
-    min-height:260px;
-
-    padding:32px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:23px;
-
-    background:#0d0d0d;
-
-    transition:.4s;
-}
-
-.callout:hover{
-    transform:translateY(-6px);
-
-    border-color:rgba(255,255,255,.2);
-
-    background:#111;
-}
-
-.callout-number{
-    color:#444;
-
-    font-size:9px;
-    letter-spacing:3px;
-}
-
-.callout-icon{
-    width:45px;
-    height:45px;
-
-    display:grid;
-    place-items:center;
-
-    margin:20px 0;
-
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:13px;
-
-    color:#ccc;
-}
-
-.callout h3{
-    font-size:19px;
-    font-weight:600;
-}
-
-.callout p{
-    color:#666;
-
-    font-size:11px;
-    line-height:1.8;
-
-    margin-top:10px;
-}
-
-.callout a{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    margin-top:20px;
-
-    color:#fff;
-
-    text-decoration:none;
-
-    font-size:9px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.callout a:hover{
-    color:#aaa;
-}
-
-.email-list{
-    margin-top:18px;
-}
-
-.email-list a{
-    display:block;
-
-    margin-top:8px;
-    padding:9px 0;
-
-    color:#aaa;
-
-    border-bottom:1px solid rgba(255,255,255,.05);
-
-    font-size:10px;
-
-    letter-spacing:0;
-
-    text-transform:none;
-}
-
-/* ================================
-   ACADEMICS
-================================ */
-
-.academic-panel{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.09);
-    border-radius:28px;
-}
-
-.academic-left{
-    padding:55px;
+.card {
+    position: relative;
+    min-height: 260px;
+    padding: 34px;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
 
     background:
-    linear-gradient(145deg,#151515,#080808);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.015)
+        );
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.academic-left h3{
-    font-family:"Playfair Display",serif;
+.card::before {
+    content: "";
+    position: absolute;
 
-    font-size:42px;
-    font-weight:500;
-}
+    width: 170px;
+    height: 170px;
 
-.academic-left p{
-    color:#666;
+    right: -80px;
+    bottom: -80px;
 
-    font-size:12px;
-    line-height:1.9;
-
-    margin-top:20px;
-}
-
-.primary-button{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-
-    margin-top:30px;
-
-    padding:14px 20px;
-
-    background:#fff;
-
-    color:#050505;
-
-    border-radius:11px;
-
-    text-decoration:none;
-
-    font-size:10px;
-    font-weight:700;
-
-    transition:.3s;
-}
-
-.primary-button:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 30px rgba(255,255,255,.1);
-}
-
-.academic-right{
-    padding:55px;
-
-    background:#0b0b0b;
-
-    border-left:1px solid rgba(255,255,255,.08);
-}
-
-.info-item{
-    padding:20px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.info-item:last-child{
-    border-bottom:0;
-}
-
-.info-item span{
-    display:block;
-
-    margin-bottom:7px;
-
-    color:#444;
-
-    font-size:8px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.info-item strong{
-    color:#ccc;
-
-    font-size:13px;
-    font-weight:500;
-}
-
-/* ================================
-   CONNECT
-================================ */
-
-.connect-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    gap:18px;
-}
-
-.connect-card{
-    padding:35px;
-
-    background:#0c0c0c;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:22px;
-}
-
-.connect-card h3{
-    font-size:20px;
-}
-
-.connect-card p{
-    color:#666;
-
-    font-size:11px;
-    line-height:1.8;
-
-    margin-top:12px;
-}
-
-.social-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-
-    margin-top:22px;
-}
-
-.social-links a{
-    padding:11px 15px;
-
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:11px;
-
-    color:#999;
-
-    text-decoration:none;
-
-    font-size:10px;
-
-    transition:.3s;
-}
-
-.social-links a:hover{
-    color:#fff;
-    background:#171717;
-}
-
-/* ================================
-   UPCOMING
-================================ */
-
-.release-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    gap:16px;
-}
-
-.release{
-    padding:30px;
-
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-
-    background:#0c0c0c;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:22px;
-}
-
-.release-status{
-    color:#555;
-
-    font-size:8px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-}
-
-.release h3{
-    margin-top:12px;
-
-    font-size:17px;
-}
-
-.release p{
-    margin-top:7px;
-
-    color:#555;
-
-    font-size:10px;
-}
-
-.date{
-    color:#ddd;
-
-    white-space:nowrap;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:18px;
-}
-
-/* ================================
-   ABOUT
-================================ */
-
-.about-panel{
-    padding:60px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:30px;
+    border-radius: 50%;
 
     background:
-    radial-gradient(circle at top right,rgba(255,255,255,.06),transparent 35%),
-    #0a0a0a;
+        radial-gradient(
+            circle,
+            rgba(215,179,106,0.12),
+            transparent 70%
+        );
 }
 
-.about-panel h3{
-    font-family:"Playfair Display",serif;
+.card:hover {
+    transform: translateY(-6px);
 
-    font-size:clamp(40px,5vw,65px);
+    border-color:
+        rgba(215,179,106,0.42);
 
-    font-weight:500;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.32);
 }
 
-.about-panel > p{
-    max-width:760px;
-
-    margin-top:20px;
-
-    color:#666;
-
-    font-size:12px;
-    line-height:1.9;
+.card-number {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 2px;
 }
 
-.highlight-list{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
+.card h2 {
+    margin-top: 13px;
 
-    gap:12px;
-
-    margin-top:45px;
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    font-weight: 600;
 }
 
-.highlight{
-    padding:22px;
+.card p {
+    margin-top: 12px;
 
-    background:#101010;
-
-    border:1px solid rgba(255,255,255,.07);
-
-    border-radius:17px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
 }
 
-.highlight i{
-    color:#aaa;
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 
-    margin-bottom:18px;
+    margin-top: 24px;
+    padding: 11px 17px;
+
+    border: 1px solid rgba(215,179,106,0.45);
+    border-radius: 9px;
+
+    background: rgba(215,179,106,0.055);
+    color: #f1e5c9;
+
+    font-size: 12px;
+
+    transition: 0.25s ease;
+    cursor: pointer;
 }
 
-.highlight h4{
-    font-size:12px;
-    line-height:1.5;
+.button:hover {
+    background: rgba(215,179,106,0.13);
+    transform: translateX(4px);
 }
 
-.highlight p{
-    color:#555;
+/* ================= CONTACT ================= */
 
-    margin-top:8px;
-
-    font-size:9px;
-    line-height:1.7;
+.contact-list {
+    margin-top: 20px;
+    display: grid;
+    gap: 10px;
 }
 
-/* ================================
-   FINAL QUOTE
-================================ */
-
-.quote-section{
-    width:min(1000px,90%);
-    margin:auto;
-
-    padding:130px 0 150px;
-
-    text-align:center;
+.contact-link {
+    color: #d4dae2;
+    font-size: 13px;
+    transition: 0.2s ease;
 }
 
-.quote-mark{
-    color:#333;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:80px;
-    line-height:.5;
+.contact-link:hover {
+    color: var(--gold);
 }
 
-.final-quote{
-    margin:30px auto;
+/* ================= FOOTER ================= */
 
-    font-family:"Playfair Display",serif;
+footer {
+    border-top: 1px solid var(--border);
+    padding: 35px 20px;
 
-    font-size:clamp(27px,5vw,52px);
+    text-align: center;
 
-    line-height:1.25;
-    letter-spacing:-1px;
+    color: #697485;
+    font-size: 10px;
+    letter-spacing: 1px;
 }
 
-.quote-author{
-    color:#444;
-
-    font-size:8px;
-    letter-spacing:4px;
-    text-transform:uppercase;
+footer strong {
+    color: #b9c1cd;
 }
 
-/* ================================
-   FOOTER
-================================ */
+/* ================= MOBILE ================= */
 
-footer{
-    padding:35px 4%;
+@media (max-width: 720px) {
 
-    border-top:1px solid rgba(255,255,255,.07);
-}
-
-.footer-inner{
-    width:min(1250px,100%);
-    margin:auto;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.footer-brand{
-    color:#555;
-
-    font-size:10px;
-}
-
-.footer-brand strong{
-    color:#aaa;
-}
-
-.footer-right{
-    color:#444;
-
-    font-size:8px;
-    letter-spacing:2px;
-}
-
-/* ================================
-   MOBILE
-================================ */
-
-@media(max-width:900px){
-
-    .nav-links{
-        display:none;
+    .navbar {
+        height: 65px;
+        padding: 0 18px;
     }
 
-    .hero-container{
-        grid-template-columns:1fr;
+    .portal-status {
+        font-size: 8px;
     }
 
-    .hero{
-        padding-top:130px;
+    .hero {
+        padding: 75px 20px 50px;
     }
 
-    .academic-panel{
-        grid-template-columns:1fr;
+    .hero h1 {
+        font-size: clamp(48px, 15vw, 75px);
     }
 
-    .academic-right{
-        border-left:0;
-        border-top:1px solid rgba(255,255,255,.08);
+    .hero-description {
+        font-size: 14px;
     }
 
-    .highlight-list{
-        grid-template-columns:1fr;
+    .cards {
+        grid-template-columns: 1fr;
+        padding: 10px 20px 70px;
+    }
+
+    .card {
+        min-height: auto;
+        padding: 28px;
+    }
+
+    .intro-info {
+        font-size: 13px;
+    }
+
+    .intro-quote {
+        font-size: 15px;
+    }
+
+    .intro-name {
+        letter-spacing: -2px;
+    }
+
+    .intro-bottom {
+        bottom: 35px;
     }
 }
-
-@media(max-width:700px){
-
-    .callout-grid,
-    .connect-grid,
-    .release-grid{
-        grid-template-columns:1fr;
-    }
-
-    .section-header{
-        display:block;
-    }
-
-    .section-description{
-        margin-top:15px;
-    }
-
-    .academic-left,
-    .academic-right,
-    .about-panel{
-        padding:30px;
-    }
-
-    .intro-spelling{
-        letter-spacing:5px;
-    }
-
-    .intro-info{
-        font-size:12px;
-    }
-
-    .footer-inner{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:15px;
-    }
-}
-
-@media(max-width:450px){
-
-    .navbar{
-        height:68px;
-    }
-
-    .logo-sub{
-        display:none;
-    }
-
-    .nav-icon{
-        width:33px;
-        height:33px;
-    }
-
-    .hero{
-        padding-left:5%;
-        padding-right:5%;
-    }
-
-    section{
-        width:90%;
-    }
-
-    .office-card{
-        padding:25px;
-    }
-
-    .callout{
-        padding:26px;
-    }
-
-    .final-quote{
-        font-size:30px;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
+<!-- ================= 5 SECOND INTRO ================= -->
 
-<!-- =========================================================
-     INTRO SCREEN
-========================================================= -->
+<section id="intro">
 
-<div id="intro">
+    <div class="intro-glow"></div>
 
-    <div class="intro-container">
+    <div class="intro-content">
 
-        <div class="intro-small">
-            Welcome to the Digital Office
+        <div class="intro-eyebrow">
+            A Personal Digital Office
         </div>
 
         <div class="intro-name">
             Mankit
         </div>
 
-        <div class="intro-spelling">
-            M A N K I T
-        </div>
-
-        <div class="intro-line"></div>
-
         <div class="intro-info">
-
-            <strong>STICHÉ • PRERANA ALUMNUS • BATCH 3</strong>
-
+            Prerana Alumni · Batch 3
             <br>
-
             Ministry of Education, India
-
             <br><br>
-
-            <strong>Sakura Science Club Member</strong>
-
-            <br>
-
-            Japan
-
+            Sakura Science Club Member · Japan
         </div>
 
         <div class="intro-quote">
-
-            "Dream beyond the ordinary,
-            then build beyond the expected."
-
-            <span>
-                Mankit Office Life
-            </span>
-
+            “Some journeys begin with a destination.
+            The remarkable ones begin with a decision
+            to build something that outlives the moment.”
         </div>
-
-        <div class="intro-loader"></div>
 
     </div>
 
-</div>
+    <div class="intro-bottom">
 
+        <div class="loading-text">
+            ENTERING DIGITAL OFFICE
+        </div>
 
-<!-- =========================================================
-     MAIN WEBSITE
-========================================================= -->
+        <div class="progress">
+            <span></span>
+        </div>
 
-<div id="mainSite">
+    </div>
 
+</section>
 
-<!-- ================= HEADER ================= -->
+<!-- ================= MAIN WEBSITE ================= -->
+
+<main id="app">
 
 <header>
+    <nav class="navbar">
 
-<nav class="navbar">
-
-    <a href="#home" class="logo">
-
-        <div class="logo-mark">
-            M
+        <div class="logo">
+            Mankit<span>.</span>
         </div>
 
-        <div>
-
-            <div class="logo-text">
-                MANKIT
-            </div>
-
-            <span class="logo-sub">
-                DIGITAL OFFICE
-            </span>
-
+        <div class="portal-status">
+            <span class="status-dot"></span>
+            Digital Office
         </div>
 
-    </a>
-
-
-    <div class="nav-links">
-
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#academics">
-            Academics
-        </a>
-
-        <a href="#connect">
-            Connect
-        </a>
-
-        <a href="#about">
-            About
-        </a>
-
-    </div>
-
-
-    <!-- FOUR ICONS -->
-
-    <div class="nav-actions">
-
-        <a href="#academics"
-           class="nav-icon"
-           title="Academics">
-
-            <i class="fa-solid fa-graduation-cap"></i>
-
-        </a>
-
-        <a href="#connect"
-           class="nav-icon"
-           title="Appointment">
-
-            <i class="fa-regular fa-calendar-check"></i>
-
-        </a>
-
-        <a href="mailto:mankitmankit7@gmail.com"
-           class="nav-icon"
-           title="Email">
-
-            <i class="fa-regular fa-envelope"></i>
-
-        </a>
-
-        <a href="#about"
-           class="nav-icon"
-           title="About">
-
-            <i class="fa-regular fa-user"></i>
-
-        </a>
-
-    </div>
-
-</nav>
-
+    </nav>
 </header>
 
-
-<!-- ================= HOME ================= -->
-
-<main id="home">
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-<div class="hero-container">
-
-
-<div>
-
-    <div class="eyebrow">
-
-        <i class="fa-solid fa-circle"></i>
-
-        MANKIT OFFICE LIFE
-
+    <div class="hero-label">
+        Official Personal Portal
     </div>
-
 
     <h1>
-
-        Ideas.
+        Ideas, Academics
         <br>
-
-        <span>Learning.</span>
-        <br>
-
-        Impact.
-
+        & Everything in Between.
     </h1>
 
-
     <p class="hero-description">
-
-        A personal digital office for academic resources,
-        ideas, communication and continuous growth —
-        built around engineering, technology and purpose.
-
+        A focused digital space for academic resources,
+        appointments, communication and future initiatives.
+        Designed to keep every important connection
+        just one click away.
     </p>
 
+    <div class="gold-line"></div>
 
-    <div class="hero-quote">
+</section>
 
-        "Your background introduces you.
-        Your work defines you."
+<!-- ================= CARDS ================= -->
 
-        <small>
-            Office Philosophy
-        </small>
+<section class="cards">
 
-    </div>
+    <!-- 01 -->
 
-</div>
-
-
-<!-- OFFICE CARD -->
-
-<div class="office-card">
-
-    <div class="card-top">
-
-        <div class="status">
-
-            <span class="status-dot"></span>
-
-            Digital Office Active
-
-        </div>
+    <article class="card">
 
         <div class="card-number">
-            01 / 05
+            01 / ACADEMICS
         </div>
 
-    </div>
+        <h2>
+            Engineering Academic Notes
+        </h2>
 
+        <p>
+            Access ICoT, RGPV — IES University Bhopal
+            academic notes and resources through the
+            organized academic workspace.
+        </p>
 
-    <h3>
-        Mankit Office Life
-    </h3>
+        <a
+            class="button"
+            href="https://fixed-dragonfly-5de.notion.site/RGPV-ICoT-Academics-3ed89058459d808081a0ceed9c57453f"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Access Academic Notes
+            <span>↗</span>
+        </a>
 
-    <p>
-        Academics   
+    </article>
+
+    <!-- 02 -->
+
+    <article class="card">
+
+        <div class="card-number">
+            02 / APPOINTMENT
+        </div>
+
+        <h2>
+            Book an Appointment
+        </h2>
+
+        <p>
+            Want to connect directly?
+            Start an appointment request with
+            your name, phone number and topic
+            already prepared in the email.
+        </p>
+
+        <a
+            class="button"
+            href="mailto:mankitmankit7@gmail.com?subject=Appointment%20Request%20-%20Mankit&body=Name:%0A%0APhone%20Number:%0A%0ATopic:%0A%0APreferred%20Date%20%26%20Time:%0A"
+        >
+            Book Appointment
+            <span>↗</span>
+        </a>
+
+    </article>
+
+    <!-- 03 -->
+
+    <article class="card">
+
+        <div class="card-number">
+            03 / CONNECT
+        </div>
+
+        <h2>
+            Feedback & Queries
+        </h2>
+
+        <p>
+            For feedback, questions, collaboration
+            or general communication, connect
+            through any of the available channels.
+        </p>
+
+        <div class="contact-list">
+
+            <a
+                class="contact-link"
+                href="mailto:mankitmankit7@gmail.com"
+            >
+                ✉ &nbsp;mankitmankit7@gmail.com
+            </a>
+
+            <a
+                class="contact-link"
+                href="mailto:mankitmankit83@gmail.com"
+            >
+                ✉ &nbsp;mankitmankit83@gmail.com
+            </a>
+
+            <a
+                class="contact-link"
+                href="https://instagram.com/Mankitvibes.only_"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ◎ &nbsp;Instagram · @Mankitvibes.only_
+            </a>
+
+        </div>
+
+    </article>
+
+    <!-- 04 -->
+
+    <article class="card">
+
+        <div class="card-number">
+            04 / OFFICIAL SITE
+        </div>
+
+        <h2>
+            Mankit Official Site
+        </h2>
+
+        <p>
+            The larger digital home of Mankit
+            is currently being built.
+            A new chapter is coming soon.
+        </p>
+
+        <span
+            class="button"
+            style="cursor:default"
+        >
+            Coming Soon
+            <span>•</span>
+        </span>
+
+    </article>
+
+    <!-- 05 -->
+
+    <article class="card">
+
+        <div class="card-number">
+            05 / ABOUT
+        </div>
+
+        <h2>
+            Know About Mankit
+        </h2>
+
+        <p>
+            Discover the journey, experiences,
+            academic interests, initiatives and
+            vision behind Mankit.
+        </p>
+
+        <span
+            class="button"
+            style="cursor:default"
+        >
+            Live on 18 October
+            <span>◷</span>
+        </span>
+
+    </article>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+    <strong>MANKIT</strong>
+    &nbsp;·&nbsp;
+    Personal Digital Office
+    &nbsp;|&nbsp;
+    Built with purpose, not noise.
+</footer>
+
+</main>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.body.style.overflow = "hidden";
+
+    setTimeout(function () {
+
+        const intro = document.getElementById("intro");
+        const app = document.getElementById("app");
+
+        intro.classList.add("hide");
+        app.classList.add("visible");
+
+        document.body.style.overflow = "auto";
+
+    }, 5000);
+
+});
+</script>
+
+</body>
+</html>   
